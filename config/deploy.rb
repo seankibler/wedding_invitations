@@ -2,7 +2,7 @@ require 'bundler/capistrano'
 
 set :application, "farmlywed"
 set :repository,  "ssh://git@bitbucket.org/seankibler/farmlywed.git"
-set :deploy_to, "/var/www/vhosts/#{application}.libertas.com"
+set :deploy_to, "/var/www/vhosts/#{application}.codingtofreedom.com"
 set :scm, :git
 set :deploy_via, :remote_cache
 
