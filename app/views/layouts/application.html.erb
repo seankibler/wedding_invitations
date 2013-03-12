@@ -9,7 +9,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -47,9 +47,7 @@
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <%= link_to 'Guest List', guests_url, :class => 'btn btn-primary' %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,13 +57,22 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
+          <div class="well">
+            <h2>Stats</h2>
+            <table class="table">
+              <tr>
+                <td>Number of guests</td>
+                <td><span class="badge badge-info"><%= @guest_count %></span></td>
+              </tr>
+              <tr>
+                <td>Number of Kids</td>
+                <td><span class="badge badge-info"><%= @kid_count %></span></td>
+              </tr>
+              <tr>
+                <td>Number of Addtl Guests</td>
+                <td><span class="badge badge-info"><%= @addtl_guests_count %></span></td>
+              </tr>
+            </table>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
@@ -75,7 +82,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2013</p>
+      <p>&copy; Company 2013</p>
       </footer>
 
     </div> <!-- /container -->
