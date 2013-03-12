@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :additional_guests, :city, :first_name, :kids, :last_name, :state, :street, :zip, :family_id
+  attr_accessible :additional_guests, :city, :name, :kids, :state, :street, :zip, :family_id
 
   belongs_to :family
 

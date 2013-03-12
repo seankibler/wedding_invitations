@@ -4,9 +4,7 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:first_name)
-      %th= model_class.human_attribute_name(:last_name)
+      %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:address)
       %th= model_class.human_attribute_name(:additional_guests)
       %th= model_class.human_attribute_name(:kids)
@@ -15,9 +13,7 @@
   %tbody
     - @guests.each do |guest|
       %tr
-        %td= link_to guest.id, guest_path(guest)
-        %td= guest.first_name
-        %td= guest.last_name
+        %td= guest.name
         %td= guest.address
         %td= guest.additional_guests
         %td= guest.kids

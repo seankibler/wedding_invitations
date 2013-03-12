@@ -11,15 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312114030) do
+ActiveRecord::Schema.define(:version => 20130312115333) do
 
   create_table "families", :force => true do |t|
     t.string "name"
   end
 
   create_table "guests", :force => true do |t|
-    t.string  "first_name"
-    t.string  "last_name"
     t.string  "street"
     t.string  "city"
     t.string  "state",             :default => "OH"
@@ -27,9 +25,10 @@ ActiveRecord::Schema.define(:version => 20130312114030) do
     t.integer "additional_guests", :default => 0
     t.integer "kids",              :default => 0
     t.integer "family_id"
+    t.string  "name"
   end
 
   add_index "guests", ["family_id"], :name => "index_guests_on_family_id"
-  add_index "guests", ["last_name"], :name => "index_guests_on_last_name"
+  add_index "guests", ["name"], :name => "index_guests_on_name"
 
 end
