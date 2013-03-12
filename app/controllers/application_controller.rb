@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   def load_stats
     @guest_count = Guest.sum(:size)
-    @kid_count = Guest.sum(:kids)
-    @addtl_guests_count = Guest.sum(:additional_guests)
-    @grand_count = @guest_count + @kid_count + @addtl_guests_count
+    @kid_guest_count = Guest.sum(:kids)
+    @addtl_guest_count = Guest.sum(:additional_guests)
+    @grand_guest_count = @guest_count + @kid_guest_count + @addtl_guest_count
   end
   hide_action :load_stats
 end

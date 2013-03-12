@@ -66,11 +66,15 @@
               </tr>
               <tr>
                 <td>Number of Kids</td>
-                <td><span class="badge badge-info"><%= @kid_count %></span></td>
+                <td><span class="badge badge-info"><%= @kid_guest_count %></span></td>
               </tr>
               <tr>
                 <td>Number of Addtl Guests</td>
-                <td><span class="badge badge-info"><%= @addtl_guests_count %></span></td>
+                <td><span class="badge badge-info"><%= @addtl_guest_count %></span></td>
+              </tr>
+              <tr>
+                <td>Guest Grand Total</td>
+                <td><span class="badge badge-success"><%= @grand_guest_count %></span></td>
               </tr>
             </table>
           </div><!--/.well -->

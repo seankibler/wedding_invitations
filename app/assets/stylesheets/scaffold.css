@@ -14,8 +14,6 @@ pre {
 }
 
 a { color: #000; }
-a:visited { color: #eee; }
-a:hover { color: #ddd; }
 
 div.field, div.actions {
   margin-bottom: 10px;
