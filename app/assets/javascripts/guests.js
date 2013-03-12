@@ -10,6 +10,13 @@ $(document).ready(function() {
     },
     minLength: 2
   });
+
+  $('.need-info').hover(function() {
+    $(this).popover('show');
+  },
+  function() {
+    $(this).popover('hide');
+  });
 });
 
 

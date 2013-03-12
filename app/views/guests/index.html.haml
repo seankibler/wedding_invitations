@@ -14,7 +14,10 @@
   %tbody
     - @guests.each do |guest|
       %tr
-        %td= guest.name
+        %td
+          - if guest.notes.present?
+            %i.icon-question-sign.need-info{:title => guest.notes}
+          = guest.name
         %td= guest.address
         %td= guest.size
         %td= guest.additional_guests
