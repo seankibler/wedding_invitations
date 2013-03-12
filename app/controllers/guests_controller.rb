@@ -80,4 +80,9 @@ class GuestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def cities
+    cities = Guest.select('DISTINCT city').where(['city LIKE ?', "#{params[:city]}%"]).map(&:city)
+    render :json => cities
+  end
 end

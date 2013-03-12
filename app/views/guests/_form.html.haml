@@ -10,7 +10,7 @@
   .control-group
     = f.label :city, :class => 'control-label'
     .controls
-      = f.text_field :city, :class => 'text_field'
+      = f.text_field :city, :class => 'text_field', :autocomplete => 'off'
   .control-group
     = f.label :state, :class => 'control-label'
     .controls
@@ -19,6 +19,10 @@
     = f.label :zip, :class => 'control-label'
     .controls
       = f.text_field :zip, :class => 'text_field'
+  .control-group
+    = f.label :size, :class => 'control-label'
+    .controls
+      = f.number_field :size, :class => 'number_field'
   .control-group
     = f.label :additional_guests, :class => 'control-label'
     .controls

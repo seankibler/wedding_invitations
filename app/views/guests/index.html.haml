@@ -6,6 +6,7 @@
     %tr
       %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:address)
+      %th= model_class.human_attribute_name(:size)
       %th= model_class.human_attribute_name(:additional_guests)
       %th= model_class.human_attribute_name(:kids)
       %th= model_class.human_attribute_name(:family_id)
@@ -15,6 +16,7 @@
       %tr
         %td= guest.name
         %td= guest.address
+        %td= guest.size
         %td= guest.additional_guests
         %td= guest.kids
         %td= guest.family.name if guest.family.present?

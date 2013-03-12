@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :additional_guests, :city, :name, :kids, :state, :street, :zip, :family_id
+  attr_accessible :additional_guests, :city, :name, :kids, :state, :street, :zip, :family_id, :size
 
   belongs_to :family
 
@@ -9,10 +9,6 @@ class Guest < ActiveRecord::Base
 
   def self.guests_count
     Guest.all.map(&:additional_guests).sum
-  end
-
-  def full_name
-    [self.first_name, self.last_name].join(' ')
   end
 
   def address
