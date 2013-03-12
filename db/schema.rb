@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312043932) do
+ActiveRecord::Schema.define(:version => 20130312114030) do
+
+  create_table "families", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "guests", :force => true do |t|
     t.string  "first_name"

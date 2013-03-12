@@ -44,7 +44,7 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.save
-        format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
+        format.html { redirect_to new_guest_url, notice: "#{@guest.full_name} was added to the guest list!" }
         format.json { render json: @guest, status: :created, location: @guest }
       else
         format.html { render action: "new" }
