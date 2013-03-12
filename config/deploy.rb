@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+load 'deploy/assets'
 
 set :application, "farmlywed"
 set :repository,  "ssh://git@bitbucket.org/seankibler/farmlywed.git"
@@ -11,12 +12,16 @@ role :app, "libertas"
 role :db,  "libertas", :primary => true
 
 
-# If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
+  task :link_database_config do
+    run "rm -f #{release_path}/config/database.yml && ln -s #{shared_path}/config/database.yml #{release_path}/config/"
+  end
+
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+after "deploy:update", "deploy:link_database_config"
 after "deploy:restart", "deploy:cleanup"
