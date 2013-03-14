@@ -42,19 +42,19 @@
             <table class="table">
               <tr>
                 <td>Number of guests</td>
-                <td><span class="badge badge-info"><%= @guest_count %></span></td>
+                <td><span id='guest-stats-subtotal' class="badge badge-info"></span></td>
               </tr>
               <tr>
                 <td>Number of Kids</td>
-                <td><span class="badge badge-info"><%= @kid_guest_count %></span></td>
+                <td><span id='guest-stats-kids' class="badge badge-info"></span></td>
               </tr>
               <tr>
                 <td>Number of Addtl Guests</td>
-                <td><span class="badge badge-info"><%= @addtl_guest_count %></span></td>
+                <td><span id='guest-stats-guests-guests' class="badge badge-info"></span></td>
               </tr>
               <tr>
                 <td>Guest Grand Total</td>
-                <td><span class="badge badge-success"><%= @grand_guest_count %></span></td>
+                <td><span id='guest-stats-grand-total' class="badge badge-success"></span></td>
               </tr>
             </table>
           </div><!--/.well -->
@@ -70,11 +70,6 @@
 
     </div> <!-- /container -->
 
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-
     <div class="modal hide fade">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -85,5 +80,16 @@
       <div class="modal-footer">
       </div>
     </div>
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          loadGuestStats();
+      });
+    </script>
   </body>
 </html>

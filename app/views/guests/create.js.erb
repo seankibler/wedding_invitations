@@ -1,3 +1,8 @@
 <% if @guest.valid? && @guest.persisted? -%>
   $('.modal').modal('toggle');
+  $('.modal').find('.modal-header, .modal-body').empty();
+  $('table#guest-list').append('<%= escape_javascript(render @guest) %>');
+  loadGuestStats();
+<% else -%>
+  $('#new_guest .errors').html('<%= escape_javascript(render 'shared/errors', :locals => {errors: @guest.errors}) %>');
 <% end -%>

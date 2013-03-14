@@ -1,7 +1,7 @@
 - model_class = Guest
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
+%table#guest-list.table.table-striped
   %thead
     %tr
       %th= model_class.human_attribute_name(:name)
@@ -12,19 +12,5 @@
       %th= model_class.human_attribute_name(:family_id)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
-    - @guests.each do |guest|
-      %tr
-        %td
-          - if guest.notes.present?
-            %i.icon-question-sign.need-info{:title => guest.notes}
-          = guest.name
-        %td= guest.address
-        %td= guest.size
-        %td= guest.additional_guests
-        %td= guest.kids
-        %td= guest.family.name if guest.family.present?
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_guest_path(guest), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), guest_path(guest), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
+    = render @guests
 = link_to t('.new', :default => t("helpers.links.new")), new_guest_path, :class => 'btn btn-primary', :remote => true
