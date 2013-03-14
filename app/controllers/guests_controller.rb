@@ -53,7 +53,7 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.update_attributes(params[:guest])
-        format.html { redirect_to @guest, notice: 'Guest was successfully updated.' }
+        format.html { redirect_to guests_path, notice: 'Guest was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,12 +67,12 @@ class GuestsController < ApplicationController
   def destroy
     @guest = Guest.find(params[:id])
     @guest.destroy
-    respond_with @guest, :location => guests_path
+    respond_with @guest, location: guests_path
   end
 
   def cities
     cities = Guest.select('DISTINCT city').where(['city LIKE ?', "#{params[:city]}%"]).map(&:city)
-    render :json => cities
+    render json: cities
   end
 
   def stats
