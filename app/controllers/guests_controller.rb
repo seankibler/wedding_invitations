@@ -1,40 +1,31 @@
 class GuestsController < ApplicationController
+  respond_to :html, :js
+
   # GET /guests
   # GET /guests.json
   def index
     @guests = Guest.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @guests }
-    end
+    respond_with @guests
   end
 
   # GET /guests/1
   # GET /guests/1.json
   def show
     @guest = Guest.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @guest }
-    end
+    respond_with @guest
   end
 
   # GET /guests/new
   # GET /guests/new.json
   def new
     @guest = Guest.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @guest }
-    end
+    respond_with @guest
   end
 
   # GET /guests/1/edit
   def edit
     @guest = Guest.find(params[:id])
+    respond_with @guest
   end
 
   # POST /guests
@@ -46,9 +37,11 @@ class GuestsController < ApplicationController
       if @guest.save
         format.html { redirect_to new_guest_url, notice: "#{@guest.name} was added to the guest list!" }
         format.json { render json: @guest, status: :created, location: @guest }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -74,11 +67,7 @@ class GuestsController < ApplicationController
   def destroy
     @guest = Guest.find(params[:id])
     @guest.destroy
-
-    respond_to do |format|
-      format.html { redirect_to guests_url }
-      format.json { head :no_content }
-    end
+    respond_with @guest, :location => guests_path
   end
 
   def cities

@@ -1,0 +1,3 @@
+<% if @guest.valid? && @guest.persisted? -%>
+  $('.modal').modal('toggle');
+<% end -%>
