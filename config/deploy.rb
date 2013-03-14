@@ -20,7 +20,7 @@ namespace :deploy do
   end
 
   task :fix_upload_permissions do
-    run "chown #{runner}:#{group} #{release_path}"
+    run "chown -R #{runner}:#{group} #{release_path}"
   end
 
   task :start do ; end
@@ -29,5 +29,6 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-after "deploy:update", "deploy:link_database_config", "fix_upload_permissions"
+after "deploy:update", "deploy:link_database_config"
+after "deploy:update_code", "deploy:fix_upload_permissions"
 after "deploy:restart", "deploy:cleanup"
