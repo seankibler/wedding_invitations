@@ -27,7 +27,8 @@
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <%= link_to 'Guest List', guests_url, :class => 'btn btn-primary' %>
+              <%= link_to 'Guest List', guests_path, :class => 'btn btn-primary' %>
+              <%= link_to 'Add Guest', new_guest_path, :remote => true, :class => 'btn btn-primary' %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
