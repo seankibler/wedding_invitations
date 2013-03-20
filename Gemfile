@@ -6,8 +6,7 @@ gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 gem 'haml'
 gem 'haml-rails'
-gem 'hashie'
-gem 'white_pages', :git => 'git://github.com/seankibler/white_pages.git'
+#gem 'white_pages', :git => 'git://github.com/seankibler/white_pages.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -3,7 +3,7 @@ class AddressLookupController < ApplicationController
     state_code = params[:state].upcase
     options = {name: params[:name], state: params[:state]}
     options.merge({state: 'OH'}) if invalid_state_code?(state_code)
-    whitepages_results = WhitePages.find_person(options)
+    #whitepages_results = WhitePages.find_person(options)
     if whitepages_results.listings.present?
       listings = whitepages_results.listings
       people = listings.map {|listing| {name: extract_listing_primary_name(listing), address: extract_listing_address(listing)} }
