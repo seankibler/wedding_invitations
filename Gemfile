@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 gem 'haml'
 gem 'haml-rails'
+gem 'hashie'
 gem 'white_pages', :git => 'git://github.com/seankibler/white_pages.git'
 
 group :assets do

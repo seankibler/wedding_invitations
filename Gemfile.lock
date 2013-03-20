@@ -157,6 +157,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   haml
   haml-rails
+  hashie
   jquery-rails
   less-rails
   rails (= 3.2.12)
