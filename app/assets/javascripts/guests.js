@@ -29,6 +29,15 @@ $(document).ready(function() {
     $(this).popover('hide');
   });
 
+  //$('#guest_name').on('blur', function(event) {
+  //  var guestName = $('#guest_name').val();
+  //  var guestState = $('#guest_state').val();
+  //  if (guestName.split(' ').length == 2) {
+  //    $.post('/guests/address', {name: guestName, state: guestState}, function(data) {
+  //      console.log(data);
+  //    });
+  //  }
+  //});
   
 });
 

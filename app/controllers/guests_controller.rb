@@ -75,6 +75,7 @@ class GuestsController < ApplicationController
     render json: cities
   end
 
+  
   def stats
     guest_count = Guest.sum(:size)
     kid_guest_count = Guest.sum(:kids)
