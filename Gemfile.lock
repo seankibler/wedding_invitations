@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:seankibler/white_pages.git
+  remote: git://github.com/seankibler/white_pages.git
   revision: b8e4b4a5e8940aaa355b15e032726ae21b694d58
   specs:
     white_pages (0.0.1)
