@@ -82,6 +82,15 @@ class GuestsController < ApplicationController
     addtl_guest_count = Guest.sum(:additional_guests)
     grand_guest_count = guest_count + kid_guest_count + addtl_guest_count
     invitations = Guest.count
-    render json: {invitations: invitations, subtotal: guest_count, kids: kid_guest_count, guests_of_guests: addtl_guest_count, grand_total: grand_guest_count}
+    missing_address = Guest.missing_address.count
+
+    render json: {
+      missing_address: missing_address,
+      invitations: invitations, 
+      subtotal: guest_count, 
+      kids: kid_guest_count, 
+      guests_of_guests: addtl_guest_count, 
+      grand_total: grand_guest_count
+    }
   end
 end

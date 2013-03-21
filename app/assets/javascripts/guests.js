@@ -9,6 +9,7 @@
       $('#guest-stats-guests-guests').html(data.guests_of_guests);
       $('#guest-stats-grand-total').html(data.grand_total);
       $('#guest-stats-invitations').html(data.invitations);
+      $('#guest-stats-missing-address').html(data.missing_address);
     });
   }
 $(document).ready(function() {
