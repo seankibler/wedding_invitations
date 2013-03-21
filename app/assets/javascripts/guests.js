@@ -8,6 +8,7 @@
       $('#guest-stats-kids').html(data.kids);
       $('#guest-stats-guests-guests').html(data.guests_of_guests);
       $('#guest-stats-grand-total').html(data.grand_total);
+      $('#guest-stats-invitations').html(data.invitations);
     });
   }
 $(document).ready(function() {
