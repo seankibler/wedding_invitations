@@ -27,8 +27,14 @@
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <%= link_to 'Guest List', guests_path, :class => 'btn btn-primary' %>
-              <%= link_to 'Add Guest', new_guest_path, :remote => true, :class => 'btn btn-primary' %>
+              <li><%= link_to 'Guest List', guests_path %></li>
+              <li><%= link_to 'Add Guest', new_guest_path, :remote => true %></li>
+              <li>
+              <%= form_tag guests_path, :method => :get, :id => 'filter' do %>
+                <%= select_tag :filter_id, options_for_select(Filter.all.map {|filter| [filter.name, filter.id]}, :selected => @filter.id) %>
+                <%= submit_tag 'Apply Filter' %>
+              <% end %>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -98,7 +104,7 @@
     <script type="text/javascript">
       $(document).ready(function() {
           loadGuestStats();
-      });
-    </script>
+          });
+</script>
   </body>
 </html>

@@ -4,6 +4,7 @@ class Guest < ActiveRecord::Base
   belongs_to :family
 
   scope :missing_address, where("street = '' OR city = ''")
+  scope :three_or_more_kids, where("kids >= 3")
 
   def address
     "#{self.street} #{self.city}, #{self.state} #{self.zip}"

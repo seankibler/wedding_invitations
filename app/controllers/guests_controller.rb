@@ -4,7 +4,9 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
-    @guests = Guest.all
+    filter_id = params[:filter_id] || 0
+    @filter = Filter.find(filter_id) 
+    @guests = Guest.send(@filter.method)
     respond_with @guests
   end
 
@@ -75,7 +77,7 @@ class GuestsController < ApplicationController
     render json: cities
   end
 
-  
+
   def stats
     guest_count = Guest.sum(:size)
     kid_guest_count = Guest.sum(:kids)
