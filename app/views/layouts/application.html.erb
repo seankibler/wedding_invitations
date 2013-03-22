@@ -35,6 +35,13 @@
                 <%= submit_tag 'Apply Filter' %>
               <% end %>
               </li>
+              <li>
+              <% if user_signed_in? %>
+                <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+              <% else %>
+                <%= link_to 'Login', new_user_session_path %>
+              <% end %>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -105,6 +112,6 @@
       $(document).ready(function() {
           loadGuestStats();
           });
-</script>
-  </body>
-</html>
+        </script>
+      </body>
+    </html>

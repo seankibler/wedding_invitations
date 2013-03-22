@@ -1,11 +1,10 @@
 class GuestsController < ApplicationController
+  before_filter :authenticate_user!
   respond_to :html, :js
 
   # GET /guests
   # GET /guests.json
   def index
-    filter_id = params[:filter_id] || 0
-    @filter = Filter.find(filter_id) 
     @guests = Guest.send(@filter.method)
     respond_with @guests
   end
