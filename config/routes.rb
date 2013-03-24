@@ -5,5 +5,5 @@ FarmlyWed::Application.routes.draw do
   get 'guests/stats' => 'guests#stats', as: :guest_stats
   resources :guests
   post 'guests/cities' => 'guests#cities'
-  post 'guests/address' => 'guests#address'
+  post 'addresses/lookup' => 'addresses#lookup'
 end

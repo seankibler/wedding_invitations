@@ -1,0 +1,8 @@
+<% if @addresses.any? %>
+  $('table#addresses tbody').empty();
+  <% @addresses.each do |address| %>
+    $('table#addresses tbody').append('<%= escape_javascript(render(partial: 'address', locals: {address: address})) %>');
+  <% end %>
+  $('#address_results').show();
+<% else %>
+<% end %>

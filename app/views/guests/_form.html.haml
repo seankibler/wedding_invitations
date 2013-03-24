@@ -1,8 +1,12 @@
 = form_for @guest, :html => { :class => 'form-horizontal', :remote => @guest.new_record? } do |f|
+  #address_results.hide
+    %table#addresses.table.table-striped.table-bordered
+      %tbody
   .control-group
     = f.label :name, :class => 'control-label'
     .controls
       = f.text_field :name, :class => 'text_field'
+      = link_to 'Lookup Address', '#', :id => 'address_lookup'
   .control-group
     = f.label :street, :class => 'control-label'
     .controls
@@ -24,14 +28,13 @@
     .controls
       = f.number_field :size, :class => 'number_field span1'
   .control-group
-    = f.label :additional_guests, :class => 'control-label'
-    .controls
-      = f.number_field :additional_guests, :class => 'number_field span1'
-  .control-group
     = f.label :kids, :class => 'control-label'
     .controls
       = f.number_field :kids, :class => 'number_field span1'
   .control-group
+    .control-label
+      = link_to 'Notes', '#', :id => 'guest_notes_toggle'
+  #guest_notes_container.control-group.hide
     = f.label :notes, :class => 'control-label'
     .controls
       = f.text_area :notes, :class => 'text_area_field', :rows => 7

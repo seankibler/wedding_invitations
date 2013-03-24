@@ -27,14 +27,31 @@ $(document).ready(function() {
   // Info Popover //
   $('.need-info').popover({html: true, trigger: 'hover', placement: 'top'});
 
-  //$('#guest_name').on('blur', function(event) {
-  //  var guestName = $('#guest_name').val();
-  //  var guestState = $('#guest_state').val();
-  //  if (guestName.split(' ').length == 2) {
-  //    $.post('/guests/address', {name: guestName, state: guestState}, function(data) {
-  //      console.log(data);
-  //    });
-  //  }
-  //});
+  // Address lookup
+  $('body').on('click', '#address_lookup', function(event) {
+    event.preventDefault();
+    var personName = $('input#guest_name').val();
+    var guestCity = $('select#guest_city').val();
+    var guestState = $('select#guest_state').val();
+    var guestZip = $('select#guest_zip').val();
+    if (personName.split(' ').length == 2) {
+      $.post('/addresses/lookup', {name: personName, state: guestState, city: guestCity, zipCode: guestZip})
+    .fail(function() { $('#address_results').prepend('An error occured trying to get address results...').show(); });
+    } else {
+      $('#address_results').prepend('<p>Enter a first and last name eg: Joe Brown, before we try to look up the address.</p>').show();
+    }
+  });
+
+  $('body').on('click', 'tr.address', function(event) {
+    $('input#guest_street').val($(this).find('.street').text());
+    $('input#guest_city').val($(this).find('.city').text());
+    $('input#guest_zip').val($(this).find('.zip').text());
+  });
+
+  // Toggle guest notes textarea
+  $('body').on('click', '#guest_notes_toggle', function(event) {
+    event.preventDefault();
+    $('#guest_notes_container').fadeToggle();
+  });
 });
 
