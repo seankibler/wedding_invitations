@@ -167,6 +167,7 @@ DEPENDENCIES
   devise
   haml
   haml-rails
+  hashie
   jquery-rails
   less-rails
   rails (= 3.2.12)
