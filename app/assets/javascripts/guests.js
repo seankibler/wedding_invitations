@@ -2,16 +2,17 @@
 // All this logic will automatically be available in application.js.
 //
 // Stats Dashboard //
-  function loadGuestStats() {
-    $.get('/guests/stats', function(data) {
-      $('#guest-stats-subtotal').html(data.subtotal);
-      $('#guest-stats-kids').html(data.kids);
-      $('#guest-stats-guests-guests').html(data.guests_of_guests);
-      $('#guest-stats-grand-total').html(data.grand_total);
-      $('#guest-stats-invitations').html(data.invitations);
-      $('#guest-stats-missing-address').html(data.missing_address);
-    });
-  }
+function loadGuestStats() {
+  $.get('/guests/stats', function(data) {
+    $('#guest-stats-subtotal').html(data.subtotal);
+    $('#guest-stats-kids').html(data.kids);
+    $('#guest-stats-guests-guests').html(data.guests_of_guests);
+    $('#guest-stats-grand-total').html(data.grand_total);
+    $('#guest-stats-invitations').html(data.invitations);
+    $('#guest-stats-missing-address').html(data.missing_address);
+  });
+}
+
 $(document).ready(function() {
   // City typeahead //
   $('input#guest_city').typeahead({
@@ -24,12 +25,7 @@ $(document).ready(function() {
   });
 
   // Info Popover //
-  $('.need-info').hover(function() {
-    $(this).popover('show');
-  },
-  function() {
-    $(this).popover('hide');
-  });
+  $('.need-info').popover({html: true, trigger: 'hover', placement: 'top'});
 
   //$('#guest_name').on('blur', function(event) {
   //  var guestName = $('#guest_name').val();
@@ -40,7 +36,5 @@ $(document).ready(function() {
   //    });
   //  }
   //});
-  
 });
-
 

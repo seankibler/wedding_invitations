@@ -26,15 +26,9 @@
           </a>
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
-            <ul class="nav">
+            <ul class="nav pull-right">
               <li><%= link_to 'Guest List', guests_path %></li>
               <li><%= link_to 'Add Guest', new_guest_path, :remote => true %></li>
-              <li>
-              <%= form_tag guests_path, :method => :get, :id => 'filter' do %>
-                <%= select_tag :filter_id, options_for_select(Filter.all.map {|filter| [filter.name, filter.id]}, :selected => @filter.id) %>
-                <%= submit_tag 'Apply Filter' %>
-              <% end %>
-              </li>
               <li>
               <% if user_signed_in? %>
                 <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
@@ -51,35 +45,15 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-          <div class="well">
-            <h2>Stats</h2>
-            <table class="table">
-              <tr>
-                <td>Incomplete Address</td>
-                <td><span id='guest-stats-missing-address' class="badge badge-info"></span></td>
-              </tr>
-              <tr>
-                <td>Invitations</td>
-                <td><span id='guest-stats-invitations' class="badge badge-info"></span></td>
-              </tr>
-              <tr>
-                <td>Number of guests</td>
-                <td><span id='guest-stats-subtotal' class="badge badge-info"></span></td>
-              </tr>
-              <tr>
-                <td>Number of Kids</td>
-                <td><span id='guest-stats-kids' class="badge badge-info"></span></td>
-              </tr>
-              <tr>
-                <td>Number of Addtl Guests</td>
-                <td><span id='guest-stats-guests-guests' class="badge badge-info"></span></td>
-              </tr>
-              <tr>
-                <td>Guest Grand Total</td>
-                <td><span id='guest-stats-grand-total' class="badge badge-success"></span></td>
-              </tr>
-            </table>
-          </div><!--/.well -->
+            <ul class="unstyled">
+              <li>
+              <%= form_tag guests_path, :method => :get, :id => 'filter' do %>
+                <%= select_tag :filter_id, options_for_select(Filter.all.map {|filter| [filter.name, filter.id]}, :selected => @filter.id), :class => 'input-medium' %>
+                <%= submit_tag 'Apply Filter' %>
+              <% end %>
+              </li>
+            </ul>
+          <%= render :partial => 'layouts/stats' %>
         </div><!--/span-->
         <div class="span9">
           <%= bootstrap_flash %>
@@ -108,10 +82,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-          loadGuestStats();
-          });
-        </script>
+    <script type="text/javascript">$(document).ready(function() { loadGuestStats(); });</script>
       </body>
     </html>

@@ -1,11 +1,23 @@
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
-body { background-color: #fff; color: #333; }
+body { background-color: #fff; color: #555; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
+  color: #777;
 }
+
+h1,h2,h3,h4 {
+  font-family: 'Great Vibes', cursive, serif; 
+  font-weight: 300;
+  color: #787878;
+}
+
+h2 { font-size: 200%; }
+h3, h3.popover-title { font-size: 175%; }
+h4 { font-size: 135%; }
+
 
 pre {
   background-color: #eee;
@@ -13,7 +25,7 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
+a { color: #3A87AD; }
 
 div.field, div.actions {
   margin-bottom: 10px;
