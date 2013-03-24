@@ -84,8 +84,14 @@ class GuestsController < ApplicationController
     grand_guest_count = guest_count + kid_guest_count + addtl_guest_count
     invitations = Guest.count
     missing_address = Guest.missing_address.count
+    seans_family = Guest.seans_family.count
+    ronnas_family = Guest.ronnas_family.count
+    friends = Guest.friends.count
 
     render json: {
+      seans_family: seans_family,
+      ronnas_family: ronnas_family,
+      friends: friends,
       missing_address: missing_address,
       invitations: invitations, 
       subtotal: guest_count, 

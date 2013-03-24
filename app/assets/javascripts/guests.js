@@ -10,6 +10,9 @@ function loadGuestStats() {
     $('#guest-stats-grand-total').html(data.grand_total);
     $('#guest-stats-invitations').html(data.invitations);
     $('#guest-stats-missing-address').html(data.missing_address);
+    $('#guest-stats-seans-family').html(data.seans_family);
+    $('#guest-stats-ronnas-family').html(data.ronnas_family);
+    $('#guest-stats-friends').html(data.friends);
   });
 }
 
