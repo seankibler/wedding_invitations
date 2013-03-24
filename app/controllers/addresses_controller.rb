@@ -20,8 +20,7 @@ class AddressesController < ApplicationController
         }
       }
     end
-    #respond_with @addresses
-    raise ActiveRecord::RecordNotFound.new 
+    respond_with @addresses
   end
 
   def listing_primary_name(listing)
