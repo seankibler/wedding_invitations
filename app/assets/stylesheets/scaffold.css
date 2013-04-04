@@ -43,27 +43,29 @@ div.field, div.actions {
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+  margin: 10px auto 10px auto;
+  border-radius:8px;
 }
 
 #error_explanation h2 {
   text-align: left;
-  font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 12px;
   margin: -7px;
   margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
+  border-radius:8px 8px 0 0;
+  border-bottom:1px solid #EED3D7;
+}
+
+#error_explanation ul {
+  margin:10px 0 10px 25px;
+  color: #B94A48;
 }
 
 #error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+  font-size: 16px;
+  list-style: circle;
 }
 a.brand { 
   font-family: 'Great Vibes', cursive, serif; 

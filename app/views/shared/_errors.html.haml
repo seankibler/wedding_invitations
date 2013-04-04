@@ -1,0 +1,6 @@
+#error_explanation.alert.alert-error
+  %h2 Oh No! Someone dropped the cake!
+  %ul
+    - errors.full_messages.each do |error_message|
+      %li= error_message
+

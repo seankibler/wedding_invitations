@@ -3,10 +3,15 @@
     %table#addresses.table.table-striped.table-bordered
       %tbody
   .control-group
-    = f.label :name, :class => 'control-label'
+    = f.label :name, '* Name', :class => 'control-label'
     .controls
-      = f.text_field :name, :class => 'text_field'
+      = f.text_field :name, :required => true, :class => 'text_field'
       = link_to 'Lookup Address', '#', :id => 'address_lookup'
+  .control-group
+    = f.label :invitation_label, :class => 'control-label'
+    .controls
+      = f.text_field :invitation_label, :class => 'text_field'
+      %i.icon-question-sign.icon-large.help-tip{:title => 'The Invitation Label', 'data-content' => I18n.translate('help.guests.invitation_label')}
   .control-group
     = f.label :street, :class => 'control-label'
     .controls
@@ -23,6 +28,7 @@
     = f.label :zip, :class => 'control-label'
     .controls
       = f.text_field :zip, :class => 'text_field span1'
+      %span.help-inline 5 or 9-digit zip code
   .control-group
     = f.label :size, :class => 'control-label'
     .controls
@@ -42,6 +48,3 @@
     = f.label :family_id, :class => 'control-label'
     .controls
       = f.collection_select :family_id, Family.all, :id, :name, :include_blank => 'Choose a family'
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), guests_path, :class => 'btn'

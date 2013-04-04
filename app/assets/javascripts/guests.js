@@ -17,6 +17,13 @@ function loadGuestStats() {
 }
 
 $(document).ready(function() {
+  // Clear modal contents on hide
+  $('#farmlywed-modal').on('hidden', function() {
+    $(this).children('.modal-header h3').empty();
+    $(this).children('.modal-body').empty();
+    $(this).children('.modal-footer').empty();
+  });
+
   // City typeahead //
   $('input#guest_city').typeahead({
     source: function(query, process) {
@@ -28,7 +35,7 @@ $(document).ready(function() {
   });
 
   // Info Popover //
-  $('.need-info').popover({html: true, trigger: 'hover', placement: 'top'});
+  $('.need-info, .help-tip').popover({html: true, trigger: 'hover', placement: 'top'});
 
   // Address lookup
   $('body').on('click', '#address_lookup', function(event) {

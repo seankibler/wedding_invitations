@@ -5,5 +5,6 @@
   $('table#guest-list').append('<%= escape_javascript(render @guest) %>');
   loadGuestStats();
 <% else -%>
-  $('#new_guest .errors').html('<%= escape_javascript(render 'shared/errors', :locals => {errors: @guest.errors}) %>');
+  $('.modal-body #error_explanation').remove();
+  $('.modal-body').prepend('<%= escape_javascript(render(partial: 'shared/errors', locals: {errors: @guest.errors})) %>');
 <% end -%>
