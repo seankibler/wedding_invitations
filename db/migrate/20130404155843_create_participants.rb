@@ -4,8 +4,10 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :type
+      t.integer :invitation_id
 
       t.timestamps
     end
+    add_index :participants, [:invitation_id, :type]
   end
 end

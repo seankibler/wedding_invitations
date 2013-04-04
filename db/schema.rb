@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404155843) do
+ActiveRecord::Schema.define(:version => 20130404162238) do
 
   create_table "families", :force => true do |t|
     t.string "name"
@@ -34,13 +34,33 @@ ActiveRecord::Schema.define(:version => 20130404155843) do
   add_index "guests", ["family_id"], :name => "index_guests_on_family_id"
   add_index "guests", ["name"], :name => "index_guests_on_name"
 
+  create_table "invitations", :force => true do |t|
+    t.string   "label"
+    t.integer  "family_id"
+    t.integer  "wedding_id"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.integer  "kids"
+    t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "invitations", ["wedding_id", "family_id"], :name => "index_invitations_on_wedding_id_and_family_id"
+  add_index "invitations", ["wedding_id"], :name => "index_invitations_on_wedding_id"
+
   create_table "participants", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "type"
+    t.integer  "wedding_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "participants", ["wedding_id", "type"], :name => "index_participants_on_wedding_id_and_type"
 
   create_table "users", :force => true do |t|
     t.string    "email",                  :default => "", :null => false

@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :invitation_label, :additional_guests, :city, :name, :kids, :state, :street, :zip, :family_id, :size, :notes
+  attr_accessible :invitation_label, :additional_guests, :name, :kids,  :street,  :city,  :state,  :zip,  :family_id, :size, :notes 
 
   belongs_to :family
   belongs_to :wedding
