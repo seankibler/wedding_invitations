@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322185255) do
+ActiveRecord::Schema.define(:version => 20130404013514) do
 
   create_table "families", :force => true do |t|
     t.string "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130322185255) do
     t.string  "name"
     t.integer "size",              :default => 1
     t.text    "notes"
+    t.string  "invitation_label"
   end
 
   add_index "guests", ["family_id"], :name => "index_guests_on_family_id"
