@@ -1,4 +1,6 @@
 FarmlyWed::Application.routes.draw do
+  resources :weddings
+
   devise_for :users
 
   root :to => 'guests#index'
