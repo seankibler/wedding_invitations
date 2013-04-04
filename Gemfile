@@ -10,6 +10,7 @@ gem 'devise'
 gem 'httparty'
 gem 'hashie'
 gem 'white_pages', :git => 'git://github.com/seankibler/white_pages.git'
+gem 'highline'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

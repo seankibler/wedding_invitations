@@ -168,6 +168,7 @@ DEPENDENCIES
   haml
   haml-rails
   hashie
+  highline
   httparty
   jquery-rails
   less-rails
