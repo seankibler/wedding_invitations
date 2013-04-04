@@ -27,8 +27,10 @@
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
-              <li><%= link_to 'Guest List', guests_path %></li>
-              <li><%= link_to 'Add Guest', new_guest_path, :remote => true %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to 'Guest List', guests_path %></li>
+                <li><%= link_to 'Add Guest', new_guest_path, :remote => true %></li>
+              <% end %>
               <li>
               <% if user_signed_in? %>
                 <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
