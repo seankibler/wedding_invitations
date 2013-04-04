@@ -29,6 +29,6 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-after "deploy:update", "deploy:link_database_config"
+after "deploy:update_code", "deploy:link_database_config"
 after "deploy:update_code", "deploy:fix_upload_permissions"
 after "deploy:restart", "deploy:cleanup"
