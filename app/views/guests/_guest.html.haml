@@ -2,7 +2,7 @@
   %td
     - if guest.notes.present?
       %i.icon-question-sign.need-info{:title => 'Notes/Questions', 'data-content' => simple_format(guest.notes)}
-    = link_to guest.name, edit_guest_path(guest), :title => 'Edit'
+    = link_to guest.invitation_label || guest.name, edit_guest_path(guest), :title => guest.name
   %td= truncate(guest.address)
   %td= guest.size
   %td= guest.additional_guests
