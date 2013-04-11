@@ -5,6 +5,7 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
+    session[:filter_id] = params[:filter_id]
     @guests = Guest.send(@filter.method)
     respond_with @guests
   end
@@ -54,7 +55,7 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.update_attributes(params[:guest])
-        format.html { redirect_to guests_path, notice: 'Guest was successfully updated.' }
+        format.html { redirect_to guests_path(filter_params), notice: 'Guest was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -99,5 +100,14 @@ class GuestsController < ApplicationController
       guests_of_guests: addtl_guest_count, 
       grand_total: grand_guest_count
     }
+  end
+
+  private
+  def had_filter?
+    session[:filter_id].present?
+  end
+
+  def filter_params
+    {filter_id: session[:filter_id]} if had_filter?
   end
 end

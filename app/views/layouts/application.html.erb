@@ -54,6 +54,9 @@
                 <%= submit_tag 'Apply Filter' %>
               <% end %>
               </li>
+              <li>
+              <%= link_to 'Reset Filters', guests_path %>
+              </li>
             </ul>
             <%= render :partial => 'layouts/stats' %>
           </div><!--/span-->
