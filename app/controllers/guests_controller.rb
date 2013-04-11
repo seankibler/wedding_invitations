@@ -69,7 +69,7 @@ class GuestsController < ApplicationController
   def destroy
     @guest = Guest.find(params[:id])
     @guest.destroy
-    respond_with @guest, location: guests_path
+    respond_with @guest, location: guests_path(filter_params)
   end
 
   def cities
