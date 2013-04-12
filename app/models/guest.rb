@@ -12,5 +12,4 @@ class Guest < ActiveRecord::Base
   scope :friends, where("family_id = #{Family.find_by_name('Friends').id}")
 
   validates :name, :presence => true
-  validates :zip, format: {with: /\d{5}(-\d{4})?/, allow_blank: true, message: I18n.translate('validations.guests.zip')}
 end

@@ -3,8 +3,8 @@
 
 en:
   help:
-    guests:
-      invitation_label: 'The invitation label is what will be printed on the invitation, ex: Mr. and Mrs. Jetson'
+    invitations:
+      invitation_label: 'The invitation label is what will be printed on the invitation, ex Mr. and Mrs. Jetson'
   validations:
-    guests:
+    invitations:
       zip: 'must be in 5 or 9 digit format'
