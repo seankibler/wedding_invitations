@@ -35,20 +35,22 @@ ActiveRecord::Schema.define(:version => 20130404162238) do
   add_index "guests", ["name"], :name => "index_guests_on_name"
 
   create_table "invitations", :force => true do |t|
-    t.string   "label"
-    t.integer  "family_id"
+    t.string   "outer_label"
+    t.integer  "group_id"
     t.integer  "wedding_id"
     t.string   "street"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
     t.integer  "kids"
+    t.integer  "size"
+    t.integer  "additional_guests"
     t.text     "notes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
-  add_index "invitations", ["wedding_id", "family_id"], :name => "index_invitations_on_wedding_id_and_family_id"
+  add_index "invitations", ["wedding_id", "group_id"], :name => "index_invitations_on_wedding_id_and_group_id"
   add_index "invitations", ["wedding_id"], :name => "index_invitations_on_wedding_id"
 
   create_table "participants", :force => true do |t|
