@@ -5,7 +5,6 @@
     = link_to invitation.outer_label, edit_invitation_path(invitation), :title => 'Edit'
   %td= truncate(invitation.address)
   %td= invitation.size
-  %td= invitation.additional_guests
   %td= invitation.kids
   %td= invitation.group.name if invitation.group.present?
   %td
