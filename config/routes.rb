@@ -1,9 +1,12 @@
 FarmlyWed::Application.routes.draw do
+  resources :weddings
+
   devise_for :users
 
-  root :to => 'guests#index'
-  get 'guests/stats' => 'guests#stats', as: :guest_stats
+  root :to => 'invitations#index'
+  get 'invitations/stats' => 'invitations#stats', as: :invitations_stats
   resources :guests
-  post 'guests/cities' => 'guests#cities'
+  resources :invitations
+  post 'invitations/cities' => 'invitations#cities'
   post 'addresses/lookup' => 'addresses#lookup'
 end

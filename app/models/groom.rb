@@ -1,0 +1,2 @@
+class Groom < Participant
+end

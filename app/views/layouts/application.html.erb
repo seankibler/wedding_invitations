@@ -28,8 +28,8 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
               <% if user_signed_in? %>
-                <li><%= link_to 'Guest List', guests_path %></li>
-                <li><%= link_to 'Add Guest', new_guest_path, :remote => true %></li>
+                <li><%= link_to 'Invitations', invitations_path %></li>
+                <li><%= link_to 'New Invitation', new_invitation_path, :remote => true %></li>
               <% end %>
               <li>
               <% if user_signed_in? %>
@@ -49,7 +49,7 @@
           <div class="span3">
             <ul class="unstyled">
               <li>
-              <%= form_tag guests_path, :method => :get, :id => 'filter' do %>
+              <%= form_tag invitations_path, :method => :get, :id => 'filter' do %>
                 <%= select_tag :filter_id, options_for_select(Filter.all.map {|filter| [filter.name, filter.id]}, :selected => @filter.id), :class => 'input-medium' %>
                 <%= submit_tag 'Apply Filter' %>
               <% end %>

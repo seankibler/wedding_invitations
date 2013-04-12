@@ -1,0 +1,2 @@
+= submit_tag 'Save', :class => 'btn btn-primary', :form => @invitation.new_record? ? 'new_invitation' : "edit_invitation_#{@invitation.id}"
+= link_to t('.cancel', :default => t("helpers.links.cancel")), '#', :class => 'btn', 'data-dismiss' => 'modal'

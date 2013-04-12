@@ -1,0 +1,10 @@
+<% if @invitation.valid? && @invitation.persisted? -%>
+  $('.modal').modal('toggle');
+  $('.modal').find('.modal-header').empty();
+  $('.modal').find('.modal-body').empty();
+  $('table#invitation-list').append('<%= escape_javascript(render @invitation) %>');
+  loadGuestStats();
+<% else -%>
+  $('.modal-body #error_explanation').remove();
+  $('.modal-body').prepend('<%= escape_javascript(render(partial: 'shared/errors', locals: {errors: @invitation.errors})) %>');
+<% end -%>
