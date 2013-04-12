@@ -1,0 +1,15 @@
+- model_class = Invitation
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table#invitation-list.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:outer_label)
+      %th= model_class.human_attribute_name(:address)
+      %th= model_class.human_attribute_name(:size)
+      %th= '+Guests'
+      %th= model_class.human_attribute_name(:kids)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    = render @invitations
+= link_to t('.new', :default => t("helpers.links.new")), new_invitation_path, :class => 'btn btn-primary', :remote => true

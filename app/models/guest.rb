@@ -13,8 +13,4 @@ class Guest < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :zip, format: {with: /\d{5}(-\d{4})?/, allow_blank: true, message: I18n.translate('validations.guests.zip')}
-
-  def address
-    "#{self.street} #{self.city}, #{self.state} #{self.zip}"
-  end
 end
