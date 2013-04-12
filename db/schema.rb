@@ -11,27 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404162238) do
+ActiveRecord::Schema.define(:version => 20130412121907) do
 
-  create_table "families", :force => true do |t|
+  create_table "groups", :force => true do |t|
     t.string "name"
   end
 
   create_table "guests", :force => true do |t|
-    t.string  "street"
-    t.string  "city"
-    t.string  "state",             :default => "OH"
-    t.string  "zip"
-    t.integer "additional_guests", :default => 0
-    t.integer "kids",              :default => 0
-    t.integer "family_id"
     t.string  "name"
-    t.integer "size",              :default => 1
-    t.text    "notes"
-    t.string  "invitation_label"
+    t.integer "invitation_id"
   end
 
-  add_index "guests", ["family_id"], :name => "index_guests_on_family_id"
+  add_index "guests", ["invitation_id"], :name => "index_guests_on_invitation_id"
   add_index "guests", ["name"], :name => "index_guests_on_name"
 
   create_table "invitations", :force => true do |t|
@@ -44,13 +35,11 @@ ActiveRecord::Schema.define(:version => 20130404162238) do
     t.string   "zip_code"
     t.integer  "kids"
     t.integer  "size"
-    t.integer  "additional_guests"
     t.text     "notes"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "invitations", ["wedding_id", "group_id"], :name => "index_invitations_on_wedding_id_and_group_id"
   add_index "invitations", ["wedding_id"], :name => "index_invitations_on_wedding_id"
 
   create_table "participants", :force => true do |t|

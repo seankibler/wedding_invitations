@@ -16,6 +16,6 @@ class CreateInvitations < ActiveRecord::Migration
       t.timestamps
     end
     add_index :invitations, :wedding_id
-    add_index :invitations, [:wedding_id, :group_id]
+    #add_index :invitations, [:wedding_id, :group_id]
   end
 end
