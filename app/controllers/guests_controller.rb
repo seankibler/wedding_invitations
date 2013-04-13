@@ -78,30 +78,6 @@ class GuestsController < ApplicationController
   end
 
 
-  def stats
-    guest_count = Guest.sum(:size)
-    kid_guest_count = Guest.sum(:kids)
-    addtl_guest_count = Guest.sum(:additional_guests)
-    grand_guest_count = guest_count + kid_guest_count + addtl_guest_count
-    invitations = Guest.count
-    missing_address = Guest.missing_address.count
-    seans_family = Guest.seans_family.count
-    ronnas_family = Guest.ronnas_family.count
-    friends = Guest.friends.count
-
-    render json: {
-      seans_family: seans_family,
-      ronnas_family: ronnas_family,
-      friends: friends,
-      missing_address: missing_address,
-      invitations: invitations, 
-      subtotal: guest_count, 
-      kids: kid_guest_count, 
-      guests_of_guests: addtl_guest_count, 
-      grand_total: grand_guest_count
-    }
-  end
-
   private
   def had_filter?
     session[:filter_id].present?

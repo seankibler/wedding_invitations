@@ -2,18 +2,17 @@
 // All this logic will automatically be available in application.js.
 //
 // Stats Dashboard //
-//function loadGuestStats() {
-//  $.get('/invitations/stats', function(data) {
-//    $('#invitations-stats-subtotal').html(data.subtotal);
-//    $('#invitation-stats-kids').html(data.kids);
-//    $('#invitation-stats-grand-total').html(data.grand_total);
-//    $('#invitation-stats-invitations').html(data.invitations);
-//    $('#invitation-stats-missing-address').html(data.missing_address);
-//    $('#invitation-stats-seans-family').html(data.seans_family);
-//    $('#invitation-stats-ronnas-family').html(data.ronnas_family);
-//    $('#invitation-stats-friends').html(data.friends);
-//  });
-//}
+function loadGuestStats() {
+  $.get('/invitations/stats', function(data) {
+    $('#stats-kids').html(data.kids);
+    $('#stats-total').html(data.guests);
+    $('#stats-invitations').html(data.invitations);
+    $('#stats-missing-address').html(data.missing_address);
+    $('#stats-grooms-family').html(data.grooms_family);
+    $('#stats-brides-family').html(data.brides_family);
+    $('#stats-friends').html(data.friends);
+  });
+}
 
 $(document).ready(function() {
   // Clear modal contents on hide

@@ -75,4 +75,24 @@ class InvitationsController < ApplicationController
     cities = Invitation.select('DISTINCT city').where(['city LIKE ?', "#{params[:city]}%"]).map(&:city)
     render json: cities
   end
+
+  def stats
+    guest_count = Invitation.sum(:size)
+    kid_guest_count = Invitation.sum(:kids)
+    invitations_count = Invitation.count
+    missing_address_count = Invitation.missing_address.count
+    grooms_family_count = Invitation.grooms_family.count
+    brides_family_count = Invitation.brides_family.count
+    friends_count = Invitation.friends.count
+
+    render json: {
+      grooms_family: grooms_family_count,
+      brides_family: brides_family_count,
+      friends: friends_count,
+      missing_address: missing_address_count,
+      invitations: invitations_count, 
+      guests: guest_count, 
+      kids: kid_guest_count, 
+    }
+  end
 end
