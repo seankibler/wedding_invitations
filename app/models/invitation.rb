@@ -9,9 +9,9 @@ class Invitation < ActiveRecord::Base
 
   scope :missing_address, where("street = '' OR city = ''")
   scope :three_or_more_kids, where("kids >= 3")
-  scope :brides_family, where("group_id = #{Group.find_by_name('Bride').id}")
-  scope :grooms_family, where("group_id = #{Group.find_by_name('Groom').id}")
-  scope :friends, where("group_id = #{Group.find_by_name('Friends').id}")
+  scope :brides_family, joins(:group).where(['groups.name = ?', 'Bride'])
+  scope :grooms_family, joins(:group).where(['groups.name = ?', 'Groom'])
+  scope :friends, joins(:group).where(['groups.name = ?', 'Friends'])
 
   def address
     "#{self.street} #{self.city}, #{self.state} #{self.zip_code}"
