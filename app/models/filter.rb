@@ -3,8 +3,8 @@ class Filter
     {:id => 0, :name => 'Select a filter', :method => :all},
     {:id => 1, :name => 'Missing Address', :method => :missing_address},
     {:id => 2, :name => 'More than 3 kids', :method => :three_or_more_kids},
-    {:id => 3, :name => 'Seans Family', :method => :seans_family},
-    {:id => 4, :name => 'Ronnas Family', :method => :ronnas_family},
+    {:id => 3, :name => 'Brides Family', :method => :grooms_family},
+    {:id => 4, :name => 'Grooms Family', :method => :brides_family},
     {:id => 5, :name => 'Friends', :method => :friends}
   ]
 
