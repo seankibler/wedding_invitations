@@ -43,4 +43,4 @@
   .control-group
     = f.label :group_id, :class => 'control-label'
     .controls
-      = f.collection_select :group_id, Family.all, :id, :name, :include_blank => 'Choose a group'
+      = f.collection_select :group_id, Group.all, :id, :name, :include_blank => 'Choose a group'
