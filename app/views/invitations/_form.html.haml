@@ -4,10 +4,10 @@
       %tbody
   .control-group
     = f.label :outer_label, '* Outer Label', :class => 'control-label'
-    %i.icon-question-sign.icon-large.help-tip{:title => 'The Outer Label', 'data-content' => I18n.translate('help.invitations.invitation_label')}
     .controls
       = f.text_field :outer_label, :required => true, :class => 'text_field'
-      = link_to 'Lookup Address', '#', :id => 'address_lookup'
+      %i.icon-question-sign.icon-large.help-tip{:title => 'The Outer Label', 'data-content' => I18n.translate('help.invitations.invitation_label')}
+  = render partial: 'invitations/guest_fields', collection: @invitation.guests, as: :guest, locals: {f: f}
   .control-group
     = f.label :street, :class => 'control-label'
     .controls
@@ -23,7 +23,7 @@
   .control-group
     = f.label :zip_code, :class => 'control-label'
     .controls
-      = f.text_field :zip_code, :class => 'text_field span1'
+      = f.text_field :zip_code, :class => 'text_field span2'
       %span.help-inline 5 or 9-digit zip code
   .control-group
     = f.label :size, :class => 'control-label'

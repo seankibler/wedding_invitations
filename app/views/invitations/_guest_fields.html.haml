@@ -1,0 +1,9 @@
+= f.fields_for :guests, guest do |guests_fields|
+  .control-group
+    = guests_fields.label :name, 'Guest Name', :class => 'control-label'
+    .controls
+      = guests_fields.text_field :name
+      - if guest.persisted?
+        = guests_fields.label :_destroy do
+          = guests_fields.check_box :_destroy
+          Delete

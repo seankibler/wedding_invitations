@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :outer_label, :city, :kids, :size, :notes, :state, :street, :wedding_id, :group_id, :zip_code
+  attr_accessible :outer_label, :city, :kids, :size, :notes, :state, :street, :wedding_id, :group_id, :zip_code, :guests_attributes
 
   belongs_to :wedding
   has_many :guests
@@ -12,6 +12,8 @@ class Invitation < ActiveRecord::Base
   scope :brides_family, joins(:group).where(['groups.name = ?', 'Bride'])
   scope :grooms_family, joins(:group).where(['groups.name = ?', 'Groom'])
   scope :friends, joins(:group).where(['groups.name = ?', 'Friends'])
+
+  accepts_nested_attributes_for :guests, allow_destroy: true, reject_if: proc {|attributes| attributes[:name].blank?}
 
   def address
     "#{self.street} #{self.city}, #{self.state} #{self.zip_code}"

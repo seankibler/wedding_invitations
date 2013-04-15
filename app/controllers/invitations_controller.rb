@@ -20,12 +20,14 @@ class InvitationsController < ApplicationController
   # GET /invitations/new.json
   def new
     @invitation = Invitation.new
+    2.times { @invitation.guests.build }
     respond_with @invitation
   end
 
   # GET /invitations/1/edit
   def edit
     @invitation = Invitation.find(params[:id])
+    @invitation.guests.build
     respond_with @invitation
   end
 

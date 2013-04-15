@@ -3,6 +3,9 @@
     - if invitation.notes.present?
       %i.icon-question-sign.need-info{:title => 'Notes/Questions', 'data-content' => simple_format(invitation.notes)}
     = link_to invitation.outer_label, edit_invitation_path(invitation), :title => 'Edit'
+  %td
+    - invitation.guests.each do |guest|
+      %p= guest.name
   %td= truncate(invitation.address)
   %td= invitation.size
   %td= invitation.kids
