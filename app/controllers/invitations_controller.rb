@@ -1,5 +1,4 @@
-class InvitationsController < ApplicationController
-  before_filter :authenticate_user!
+class InvitationsController < MembersController
   respond_to :html, :js
 
   # GET /invitations

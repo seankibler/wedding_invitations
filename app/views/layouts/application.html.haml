@@ -1,0 +1,26 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title FarmlyWed - Easily Prepare and Manage Your Wedding Guest Invitation List
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "With FarmlyWed you build a guest list for your wedding, as a member you can invite family to help you with your wedding guests invitations", :name => "description"}/
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    
+  %body
+    .container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          %li
+            = link_to 'Sign In', new_user_session_path
+          %li
+            = link_to 'About', page_path('about')
+          %li
+            = link_to 'Contact', page_path('contact')
+        %h2.muted FarmlyWed
+      %hr/
+      = yield
+      %hr/
+      .footer
+        %p © FarmlyWed 2013

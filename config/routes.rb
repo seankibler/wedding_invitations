@@ -3,7 +3,7 @@ FarmlyWed::Application.routes.draw do
 
   devise_for :users
 
-  root :to => 'invitations#index'
+  root :to => 'pages#show'
   get 'invitations/stats' => 'invitations#stats', as: :invitations_stats
   resources :guests
   resources :invitations do
@@ -13,4 +13,5 @@ FarmlyWed::Application.routes.draw do
   end
   post 'invitations/cities' => 'invitations#cities'
   post 'addresses/lookup' => 'addresses#lookup'
+  get ':page' => 'pages#show', as: :page
 end
