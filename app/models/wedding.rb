@@ -1,7 +1,7 @@
 class Wedding < ActiveRecord::Base
   attr_accessible :bride_attributes, :groom_attributes, :wedding_date, :groom_id, :bride_id
   has_many :guests
-  has_many :users
+  has_many :members
   has_many :families
   has_one :groom
   has_one :bride

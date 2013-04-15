@@ -13,14 +13,19 @@
       .masthead
         %ul.nav.nav-pills.pull-right
           %li
-            = link_to 'Sign In', new_user_session_path
+            - if member_signed_in?
+              = link_to 'Sign Out', destroy_member_session_path, method: :delete
+            - else
+              = link_to 'Sign In', new_member_session_path
           %li
             = link_to 'About', page_path('about')
           %li
             = link_to 'Contact', page_path('contact')
-        %h2.muted FarmlyWed
+        %h2.muted 
+          = link_to 'FarmlyWed', root_path
       %hr/
       = yield
       %hr/
       .footer
         %p © FarmlyWed 2013
+  = javascript_include_tag "application"

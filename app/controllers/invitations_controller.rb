@@ -1,4 +1,5 @@
-class InvitationsController < MembersController
+class InvitationsController < ApplicationController
+  layout 'members'
   respond_to :html, :js
 
   # GET /invitations
