@@ -6,7 +6,10 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "With FarmlyWed you build a guest list for your wedding, as a member you can invite family to help you with your wedding guests invitations", :name => "description"}/
     = csrf_meta_tags
-    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "application", media: "all"
+    = stylesheet_link_tag "http://cdn-images.mailchimp.com/embedcode/slim-081711.css", media: "all"
+    :css
+      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
     
   %body
     .container-narrow
