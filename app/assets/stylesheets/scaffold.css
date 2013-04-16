@@ -109,3 +109,10 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+a.brand {
+  color: #787878;
+}
+a.brand:hover {
+  text-decoration: none;
+  color: #979797;
+}
