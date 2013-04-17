@@ -9,6 +9,6 @@ FarmlyWed::Application.routes.draw do
   end
   post 'invitations/cities' => 'invitations#cities'
   post 'addresses/lookup' => 'addresses#lookup'
-  root :to => 'pages#show'
+  root :to => 'pages#show', :page => 'index'
   get ':page' => 'pages#show', as: :page
 end
