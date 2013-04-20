@@ -1,2 +1,3 @@
-class Bride < Participant
+class Bride < User
+  has_one :wedding
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_up_wedding
 
   def set_up_wedding
-    if member_signed_in? && current_wedding.nil? && params[:controller] != 'weddings'
+    if user_signed_in? && current_wedding.nil? && params[:controller] != 'weddings'
       redirect_to new_wedding_path
     end
   end
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_wedding
-    current_member.weddings.first
+    current_user.weddings.first
   end
 
   def get_filter

@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_filter :authenticate_member!
+  before_filter :authenticate_user!
   layout 'members'
   respond_to :html, :js
 

@@ -1,5 +1,5 @@
 FarmlyWed::Application.routes.draw do
-  devise_for :members
+  devise_for :users
   resources :weddings
   get 'invitations/stats' => 'invitations#stats', as: :invitations_stats
   resources :invitations do
