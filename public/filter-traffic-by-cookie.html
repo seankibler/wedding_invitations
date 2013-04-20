@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Google Analytics Exclusion Page</title>
+</head>
+<body onLoad="javascript:_gat._getTrackerByName()._setVar('exclude_visitor');">
+<!-- http://support.google.com/googleanalytics/bin/answer.py?hl=en&answer=55481 -->
+
+<h1>Google Analytics Exclusion</h1>
+
+<p>Visiting this page will set a cookie on the visitor's browser. This works in combination with a filter set up in Google Analytics to exclude traffic from anyone visiting this page.  It is a persistent cookie, so a person only need visit this page once for the cookie to be effective for future visits. </p> 
+
+<h2>Technical Details</h2>
+
+<h3>Setting the cookie</h3>
+
+<p>The cookie is set by a combination of:</p>
+
+<p>a) javascript in the body tag that includes: pageTracker._setVar('exclude_visitor') <br />
+b) same Google Analytics tracking code used throughout the site inserted at the end of this page.<br />
+(View source code for specifics)</p> 
+<p>The _setVar() value is stored in the _utmv cookie.</p>
+
+
+<h3>GA Exclude Filter:</h3>
+
+<p>Filter Type: Custom filter &gt Exclude<br />
+Filter Field: User Defined<br />
+Filter Pattern: exclude_visitor (must match the name of the _setVar)<br />
+Case Sensitive: No</p>
+<p>The value of _setVar() is stored in the Google Analytics field labeled User Defined.</p>
+
+<p>At this time, it looks like filters are not taken into account when calculating Google's Real Time Beta Stats</p>
+
+<!-- Insert regular Google Analytics Tracking Code used on site here: -->
+<!-- Google Analytics Code -->
+<script type="text/javascript">// <![CDATA[
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40198134-1']);
+  _gaq.push(['_setDomainName', 'farmlywed.com']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+// ]]></script>
+<!-- Google Analytics Code -->
+
+</body>
+</html>
+
