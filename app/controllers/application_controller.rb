@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_wedding
-    current_user.weddings.first
+    current_user.wedding
   end
 
   def get_filter

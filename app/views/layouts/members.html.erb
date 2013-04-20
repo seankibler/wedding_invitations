@@ -27,15 +27,15 @@
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
-              <% if member_signed_in? %>
+              <% if user_signed_in? %>
                 <li><%= link_to 'Invitations', invitations_path %></li>
                 <li><%= link_to 'New Invitation', new_invitation_path, :remote => true %></li>
               <% end %>
               <li>
-              <% if member_signed_in? %>
-                <%= link_to 'Sign Out', destroy_member_session_path, :method => :delete %>
+              <% if user_signed_in? %>
+                <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
               <% else %>
-                <%= link_to 'Sign In', new_member_session_path %>
+                <%= link_to 'Sign In', new_user_session_path %>
               <% end %>
               </li>
             </ul>
@@ -45,7 +45,7 @@
     </div>
     <div class="container-fluid">
       <div class="row-fluid">
-        <%- if member_signed_in? %>
+        <%- if user_signed_in? %>
           <div class="span3">
             <ul class="unstyled">
               <li>
