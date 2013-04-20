@@ -9,4 +9,8 @@ class Wedding < ActiveRecord::Base
 
   accepts_nested_attributes_for :bride
   accepts_nested_attributes_for :groom
+
+  def name
+    "Joining of #{groom.name} and #{bride.name}"
+  end
 end

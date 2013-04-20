@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   def current_wedding
     current_user.wedding
   end
+  helper_method :current_wedding
 
   def get_filter
     filter_id = params[:filter_id] || 0
