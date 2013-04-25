@@ -44,7 +44,10 @@
       <div class="row-fluid">
         <%- if user_signed_in? %>
           <div class="span3">
-            <h2><%= current_wedding.name %></h2>
+            <h2>
+              <%= current_wedding.name %>
+              <%= current_wedding.wedding_date %>
+            </h2>
             <ul class="unstyled">
               <li>
               <%= form_tag invitations_path, :method => :get, :id => 'filter' do %>
