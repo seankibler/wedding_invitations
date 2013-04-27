@@ -12,6 +12,7 @@ class Invitation < ActiveRecord::Base
   scope :brides_family, joins(:group).where(['groups.name = ?', 'Bride'])
   scope :grooms_family, joins(:group).where(['groups.name = ?', 'Groom'])
   scope :friends, joins(:group).where(['groups.name = ?', 'Friends'])
+  scope :no_label, where(:outer_label => nil)
 
   accepts_nested_attributes_for :guests, allow_destroy: true, reject_if: proc {|attributes| attributes[:name].blank?}
 
