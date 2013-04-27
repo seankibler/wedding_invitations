@@ -36,17 +36,20 @@ $(document).ready(function() {
   $('.need-info, .help-tip').popover({html: true, trigger: 'hover', placement: 'top'});
 
   // Address lookup
-  $('body').on('click', '#address_lookup', function(event) {
+  $('body').on('click', '.address_lookup', function(event) {
     event.preventDefault();
-    var personName = $('input#invitation_name').val();
-    var invitationCity = $('select#invitation_city').val();
+    $('#address_lookup_error').remove();
+    var personInput = $(this).siblings('input[type=text]');
+    var personName = personInput.val();
+    var invitationCity = $('input#invitation_city').val();
     var invitationState = $('select#invitation_state').val();
-    var invitationZip = $('select#invitation_zip').val();
-    if (personName.split(' ').length == 2) {
+    var invitationZip = $('input#invitation_zip').val();
+    if (personName.length > 0) {
       $.post('/addresses/lookup', {name: personName, state: invitationState, city: invitationCity, zipCode: invitationZip})
-    .fail(function() { $('#address_results').prepend('An error occured trying to get address results...').show(); });
+    .fail(function() { personInput.parents('form').prepend('<p id="address_lookup_error">An error occured trying to get address results...</p>'); });
     } else {
-      $('#address_results').prepend('<p>Enter a first and last name eg: Joe Brown, before we try to look up the address.</p>').show();
+      $(this).siblings('input[type=text]').css('background-color', '#ee4');
+      $(this).parents('form').prepend('<p id="address_lookup_error">We\'re not magicians, we need a name :)</p>').show();
     }
   });
 

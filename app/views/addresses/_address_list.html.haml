@@ -1,0 +1,10 @@
+%table#addresses.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Street
+      %th City
+      %th Zip Code
+  %tbody
+    - @addresses.each do |address|
+      = render partial: 'address', locals: {address: address}

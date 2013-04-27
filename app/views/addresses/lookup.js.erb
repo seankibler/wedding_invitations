@@ -1,8 +1,8 @@
-<% if @addresses.any? %>
-  $('table#addresses tbody').empty();
-  <% @addresses.each do |address| %>
-    $('table#addresses tbody').append('<%= escape_javascript(render(partial: 'address', locals: {address: address})) %>');
-  <% end %>
-  $('#address_results').show();
+<% if @addresses.present? && @addresses.any? %>
+  $('#farmlywed-modal .modal-header h3').html('Address Lookup Results.');
+  $('#farmlywed-modal .modal-body').html('<%= escape_javascript(render(partial: 'address_list')) %>');
+  $('#farmlywed-modal').modal('show');
 <% else %>
+  $('farmlywed-modal .modal-body').html('<p>Sorry we could not find any matches.</p>');
+  $('#farmlywed-modal').modal('show');
 <% end %>
