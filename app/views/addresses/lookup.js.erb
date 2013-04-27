@@ -3,6 +3,6 @@
   $('#farmlywed-modal .modal-body').html('<%= escape_javascript(render(partial: 'address_list')) %>');
   $('#farmlywed-modal').modal('show');
 <% else %>
-  $('farmlywed-modal .modal-body').html('<p>Sorry we could not find any matches.</p>');
+  $('#farmlywed-modal .modal-body').html('<p>Sorry we could not find any matches.</p>');
   $('#farmlywed-modal').modal('show');
 <% end %>
