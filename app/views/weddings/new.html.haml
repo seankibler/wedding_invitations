@@ -6,23 +6,24 @@
       = label_tag :skip_bride, class: 'checkbox' do
         = check_box_tag :skip_bride, nil, nil, class: 'skip', data: {hide: '#bride_fields'}
         Skip bride at this time
-      = f.fields_for :bride do |bride_fields|
-        .control-group
-          .controls
-            = bride_fields.text_field :first_name, placeholder: 'Bride First Name'
-        .control-group
-          .controls
-            = bride_fields.text_field :last_name, placeholder: 'Bride Last Name'
-        - if @wedding.bride.new_record?
+      #bride_fields
+        = f.fields_for :bride do |bride_fields|
           .control-group
             .controls
-              = bride_fields.text_field :email, placeholder: 'Bride Email'
+              = bride_fields.text_field :first_name, placeholder: 'Bride First Name'
           .control-group
             .controls
-              = bride_fields.password_field :password, placeholder: 'Bride Password'
-          .control-group
-            .controls
-              = bride_fields.password_field :password_confirmation, placeholder: 'Confirm Bride Password'
+              = bride_fields.text_field :last_name, placeholder: 'Bride Last Name'
+          - if @wedding.bride.new_record?
+            .control-group
+              .controls
+                = bride_fields.text_field :email, placeholder: 'Bride Email'
+            .control-group
+              .controls
+                = bride_fields.password_field :password, placeholder: 'Bride Password'
+            .control-group
+              .controls
+                = bride_fields.password_field :password_confirmation, placeholder: 'Confirm Bride Password'
     - else
       %h3 Tell us about your Groom
       = label_tag :skip_groom, class: 'checkbox' do
