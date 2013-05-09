@@ -1,13 +1,30 @@
 .jumbotron
   %h2 Set Up Your Wedding
   = form_for @wedding do |f|
-    %p
+    - if current_user.is_a? Groom
+      %h3 Tell us about your Bride
       = f.fields_for :bride do |bride_fields|
-        = bride_fields.text_field :name, placeholder: 'Bride Name'
-    %p
+        .control-group
+          .controls
+            = bride_fields.text_field :first_name, placeholder: 'Bride First Name'
+            = bride_fields.text_field :last_name, placeholder: 'Bride Last Name'
+        - if @wedding.bride.new_record?
+          .control-group
+            .controls
+              = bride_fields.text_field :email, placeholder: 'Bride Email'
+          .control-group
+            .controls
+              = bride_fields.password_field :password, placeholder: 'Bride Password'
+              = bride_fields.password_field :password_confirmation, placeholder: 'Confirm Bride Password'
+    - else
+      %h3 Tell us about your Groom
       = f.fields_for :groom do |groom_fields|
-        = groom_fields.text_field :name, placeholder: 'Groom Name'
-    %p
-      = f.text_field :wedding_date, placeholder: 'Wedding Date'
+        = groom_fields.text_field :first_name, placeholder: 'Groom First Name'
+        = groom_fields.text_field :last_name, placeholder: 'Groom Last Name'
+        - if @wedding.groom.new_record?
+          = groom_fields.text_field :email, placeholder: 'Groom Email'
+    .control-group
+      .controls
+        = f.text_field :wedding_date, placeholder: 'Wedding Date'
 
     = f.submit 'Continue', class: 'btn'
