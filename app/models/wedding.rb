@@ -11,6 +11,6 @@ class Wedding < ActiveRecord::Base
   accepts_nested_attributes_for :groom
 
   def name
-    "Joining of #{groom.name} and #{bride.name}"
+    "Joining of #{groom.try(:name)} and #{bride.try(:name)} on #{wedding_date.to_s(:long)}"
   end
 end

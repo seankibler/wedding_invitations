@@ -3,6 +3,9 @@
   = form_for @wedding do |f|
     - if current_user.is_a? Groom
       %h3 Tell us about your Bride
+      = label_tag :skip_bride, class: 'checkbox' do
+        = check_box_tag :skip_bride, nil, nil, class: 'skip', data: {hide: '#bride_fields'}
+        Skip bride at this time
       = f.fields_for :bride do |bride_fields|
         .control-group
           .controls
@@ -22,23 +25,27 @@
               = bride_fields.password_field :password_confirmation, placeholder: 'Confirm Bride Password'
     - else
       %h3 Tell us about your Groom
-      = f.fields_for :groom do |groom_fields|
-        .control-group
-          .controls
-            = groom_fields.text_field :first_name, placeholder: 'Groom First Name'
-        .control-group
-          .controls
-            = groom_fields.text_field :last_name, placeholder: 'Groom Last Name'
-        - if @wedding.groom.new_record?
+      = label_tag :skip_groom, class: 'checkbox' do
+        = check_box_tag :skip_groom, nil, nil, class: 'skip', data: {hide: '#groom_fields'}
+        Skip groom at this time
+      #groom_fields
+        = f.fields_for :groom do |groom_fields|
           .control-group
             .controls
-              = groom_fields.text_field :email, placeholder: 'Groom Email'
+              = groom_fields.text_field :first_name, placeholder: 'Groom First Name'
           .control-group
             .controls
-              = groom_fields.password_field :password, placeholder: 'Groom Password'
-          .control-group
-            .controls
-              = groom_fields.password_field :password_confirmation, placeholder: 'Confirm Groom Password'
+              = groom_fields.text_field :last_name, placeholder: 'Groom Last Name'
+          - if @wedding.groom.new_record?
+            .control-group
+              .controls
+                = groom_fields.text_field :email, placeholder: 'Groom Email'
+            .control-group
+              .controls
+                = groom_fields.password_field :password, placeholder: 'Groom Password'
+            .control-group
+              .controls
+                = groom_fields.password_field :password_confirmation, placeholder: 'Confirm Groom Password'
     .control-group
       .controls
         = f.text_field :wedding_date, placeholder: 'Wedding Date'

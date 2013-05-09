@@ -1,5 +1,6 @@
 class WeddingsController < ApplicationController
   respond_to :html
+  before_filter :authenticate_user!
 
   def new
     @wedding = current_user.build_wedding
@@ -11,7 +12,12 @@ class WeddingsController < ApplicationController
   end
 
   def create
-    @wedding = current_user.build_wedding params[:wedding]
+    if params[:skip_bride] || params[:skip_groom] 
+      @wedding = current_user.build_wedding
+      @wedding.wedding_date = params[:wedding][:wedding_date]
+    else
+      @wedding = current_user.build_wedding params[:wedding]
+    end
     @wedding.save
     respond_with @wedding, location: invitations_path
   end
