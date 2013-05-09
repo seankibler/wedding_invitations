@@ -13,4 +13,13 @@ class Wedding < ActiveRecord::Base
   def name
     "Joining of #{groom.try(:name)} and #{bride.try(:name)} on #{wedding_date.to_s(:long)}"
   end
+
+  def at_max_trial_invitations?
+    return false if paid?
+    invitations.count >= MAX_TRIAL_INVITATIONS
+  end
+
+  def paid?
+    false
+  end
 end

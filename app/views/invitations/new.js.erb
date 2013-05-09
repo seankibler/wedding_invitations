@@ -1,4 +1,10 @@
-$('.modal-header h3').html("Add a invitation");
-$('.modal-body').html('<%= escape_javascript(render 'form') %>');
-$('.modal-footer').append('<%= escape_javascript(render 'form_actions') %>');
+<% if @at_max_trial_invitations == false %>
+  $('.modal-header h3').html("Add a invitation");
+  $('.modal-body').html('<%= escape_javascript(render 'form') %>');
+  $('.modal-footer').append('<%= escape_javascript(render 'form_actions') %>');
+<% else %>
+  $('.modal-header h3').html("Trial Account");
+  $('.modal-body').html('<%= escape_javascript(flash[:warning]) %>');
+<% end %>
 $('.modal').modal('toggle');
+

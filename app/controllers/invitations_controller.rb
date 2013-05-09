@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!
+  append_before_filter :limit_trial_invitations, only: [:new, :create]
   layout 'members'
   respond_to :html, :js
 
@@ -74,11 +75,13 @@ class InvitationsController < ApplicationController
     respond_with @invitation, location: invitations_path
   end
 
+  # GET /invitations/cities/:city
   def cities
     cities = current_wedding.invitations.select('DISTINCT city').where(['city LIKE ?', "#{params[:city]}%"]).map(&:city)
     render json: cities
   end
 
+  # GET /invitations/stats
   def stats
     guest_count = current_wedding.invitations.sum(:size)
     kid_guest_count = current_wedding.invitations.sum(:kids)
@@ -98,4 +101,15 @@ class InvitationsController < ApplicationController
       kids: kid_guest_count, 
     }
   end
+
+  def limit_trial_invitations
+    if current_wedding.at_max_trial_invitations?
+      @at_max_trial_invitations = true
+      flash.now[:warning] = 'You have reached the maximum invitations for a trial account. Please add a payment method to continue.'
+      if params[:action] == :create
+        redirect_to :back
+      end
+    end
+  end
+  private :limit_trial_invitations
 end
