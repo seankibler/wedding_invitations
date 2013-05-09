@@ -40,7 +40,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to new_invitation_url, notice: "#{@invitation.name} was added to the invitation list!" }
+        format.html { redirect_to invitations_path, notice: "#{@invitation.outer_label} was added to the invitation list!" }
         format.json { render json: @invitation, status: :created, location: @invitation }
         format.js
       else
@@ -105,10 +105,8 @@ class InvitationsController < ApplicationController
   def limit_trial_invitations
     if current_wedding.at_max_trial_invitations?
       @at_max_trial_invitations = true
-      flash.now[:warning] = 'You have reached the maximum invitations for a trial account. Please add a payment method to continue.'
-      if params[:action] == :create
-        redirect_to invitations_path
-      end
+      flash[:warning] = 'You have reached the maximum invitations for a trial account. Please add a payment method to continue.'
+      redirect_to invitations_path
     end
   end
   private :limit_trial_invitations

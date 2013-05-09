@@ -1,4 +1,4 @@
-= form_for @invitation, :html => { :class => 'form-horizontal', :remote => @invitation.new_record? } do |f|
+= form_for @invitation, :html => { :class => 'form-horizontal', remote: request.xhr?} do |f|
   .control-group
     = f.label :outer_label, '* Outer Label', :class => 'control-label'
     .controls
