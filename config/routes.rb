@@ -11,15 +11,15 @@ FarmlyWed::Application.routes.draw do
   resources :weddings
 
   # Invitations
+  get 'invitations/stats' => 'invitations#stats', as: :invitations_stats
+  post 'invitations/cities' => 'invitations#cities'
+  post 'addresses/lookup' => 'addresses#lookup'
+
   resources :invitations do
     member do
       post :add_guest
     end
   end
-  get 'invitations/stats' => 'invitations#stats', as: :invitations_stats
-  post 'invitations/cities' => 'invitations#cities'
-
-  post 'addresses/lookup' => 'addresses#lookup'
 
   # Public pages
   resources :contacts, only: [:create]
