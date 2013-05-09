@@ -60,7 +60,7 @@
         <%- end %>
         <div class="span9">
           <%= bootstrap_flash %>
-          <%= yield :title %>
+          <%= yield :heading %>
           <ul class="inline">
             <% Filter.all.each do |filter| %>
               <% if @filter.id == filter.id %>
