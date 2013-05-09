@@ -1,6 +1,5 @@
 class Filter
   FILTERS = [
-    { id: 0, name: 'Select a filter', method: :all},
     { id: 1, name: 'Missing Address', method: :missing_address},
     { id: 2, name: 'More than 3 kids', method: :three_or_more_kids},
     { id: 3, name: 'Brides Family', method: :brides_family},
@@ -20,10 +19,22 @@ class Filter
   end
 
   def self.find(id)
-    Filter.new(FILTERS.select {|filter_attrs| filter_attrs[:id] == id.to_i}.first)
+    if id.nil?
+      Filter.default
+    else
+      Filter.new(FILTERS.select {|filter_attrs| filter_attrs[:id] == id.to_i}.first)
+    end
   end
 
   def self.all
     FILTERS.map {|filter_attrs| Filter.new(filter_attrs) }
+  end
+
+  def self.default
+    new({id: 0, name: 'Default Filter', method: :all})
+  end
+
+  def default?
+    @id == 0
   end
 end

@@ -1,6 +1,7 @@
 - model_class = Invitation
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+= content_for :title do
+  .page-header
+    %h1=t '.title', :default => model_class.model_name.human.pluralize
 %table#invitation-list.table.table-striped
   %thead
     %tr

@@ -114,3 +114,13 @@ a.brand:hover {
   text-decoration: none;
   color: #979797;
 }
+
+/* List Filters */
+a.remove-filter {
+  color: white;
+}
+a.filter { 
+  margin:5px 0; 
+  padding:5px;
+  font-size: 80%;
+}

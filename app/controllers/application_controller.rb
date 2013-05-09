@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_wedding
 
   def get_filter
-    filter_id = params[:filter_id] || 0
+    filter_id = params[:filter]
     @filter = Filter.find(filter_id) 
   end
   hide_action :get_filter

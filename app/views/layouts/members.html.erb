@@ -27,12 +27,22 @@
           <a class="brand" href="#">FarmlyWed</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
-              <% if user_signed_in? %>
-                <li><%= link_to 'Invitations', invitations_path %></li>
-                <li><%= link_to 'New Invitation', new_invitation_path, :remote => true %></li>
-                <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-              <% else %>
-                <li><%= link_to 'Sign In', new_user_session_path %></li>
+              <li>
+              <%= link_to invitations_path do %>
+                <span class="icon icon-list"></span>
+                Invitations
+              <% end %>
+              </li>
+              <li>
+              <%= link_to new_invitation_path, :remote => true do %>
+                <span class="icon icon-plus-sign"></span>
+                New Invitation
+              <% end %>
+              </li>
+              <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <span class="icon icon-off"></span>
+                Sign Out
               <% end %>
               </li>
             </ul>
@@ -45,22 +55,29 @@
         <%- if user_signed_in? %>
           <div class="span3">
             <h2><%= current_wedding.name %></h2>
-            <ul class="unstyled">
-              <li>
-              <%= form_tag invitations_path, :method => :get, :id => 'filter' do %>
-                <%= select_tag :filter_id, options_for_select(Filter.all.map {|filter| [filter.name, filter.id]}, :selected => @filter.id), :class => 'input-medium' %>
-                <%= submit_tag 'Apply Filter', class: 'btn' %>
-              <% end %>
-              </li>
-              <li>
-              <%= link_to 'Remove Filter', invitations_path %>
-              </li>
-            </ul>
             <%= render :partial => 'layouts/stats' %>
           </div><!--/span-->
         <%- end %>
         <div class="span9">
           <%= bootstrap_flash %>
+          <%= yield :title %>
+          <ul class="inline">
+            <% Filter.all.each do |filter| %>
+              <% if @filter.id == filter.id %>
+                <%= link_to invitations_path, class: 'remove-filter btn btn-primary' do %>
+                  &times;
+                  <%= filter.name %>
+                <% end %>
+              <% else %>
+                <li>
+                <%= link_to invitations_path(filter: filter.id), class: 'filter btn' do %>
+                  <span class="icon icon-filter"></span>
+                  <%= filter.name %>
+                <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
           <%= yield %>
         </div>
       </div><!--/row-->

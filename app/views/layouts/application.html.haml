@@ -16,16 +16,19 @@
       .masthead
         %ul.nav.nav-pills.pull-right
           %li
-            - if user_signed_in?
-              = link_to 'Sign Out', destroy_user_session_path, method: :delete
-            - else
-              = link_to 'Sign In', new_user_session_path
-          %li
             = link_to 'About', page_path('about')
           %li
             = link_to 'FAQs', page_path('faqs')
           %li
             = link_to 'Contact', page_path('contact')
+          - if user_signed_in?
+            %li= link_to 'Invitations', invitations_path
+            %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else
+            %li
+              = link_to new_user_session_path do
+                %span.icon.icon-user
+                Sign In
         %h2.muted 
           = link_to 'FarmlyWed', root_path, class: 'brand'
       %hr/
