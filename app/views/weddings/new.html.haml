@@ -7,6 +7,8 @@
         .control-group
           .controls
             = bride_fields.text_field :first_name, placeholder: 'Bride First Name'
+        .control-group
+          .controls
             = bride_fields.text_field :last_name, placeholder: 'Bride Last Name'
         - if @wedding.bride.new_record?
           .control-group
@@ -15,14 +17,28 @@
           .control-group
             .controls
               = bride_fields.password_field :password, placeholder: 'Bride Password'
+          .control-group
+            .controls
               = bride_fields.password_field :password_confirmation, placeholder: 'Confirm Bride Password'
     - else
       %h3 Tell us about your Groom
       = f.fields_for :groom do |groom_fields|
-        = groom_fields.text_field :first_name, placeholder: 'Groom First Name'
-        = groom_fields.text_field :last_name, placeholder: 'Groom Last Name'
+        .control-group
+          .controls
+            = groom_fields.text_field :first_name, placeholder: 'Groom First Name'
+        .control-group
+          .controls
+            = groom_fields.text_field :last_name, placeholder: 'Groom Last Name'
         - if @wedding.groom.new_record?
-          = groom_fields.text_field :email, placeholder: 'Groom Email'
+          .control-group
+            .controls
+              = groom_fields.text_field :email, placeholder: 'Groom Email'
+          .control-group
+            .controls
+              = groom_fields.password_field :password, placeholder: 'Groom Password'
+          .control-group
+            .controls
+              = groom_fields.password_field :password_confirmation, placeholder: 'Confirm Groom Password'
     .control-group
       .controls
         = f.text_field :wedding_date, placeholder: 'Wedding Date'
