@@ -1,0 +1,9 @@
+%h1 Contacts
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td= link_to contact.name, admin_contact_path(contact)
+        %td= contact.email
+        %td= contact.created_at.to_s(:long)

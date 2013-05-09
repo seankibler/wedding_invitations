@@ -1,0 +1,28 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title FarmlyWed - Admin 
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", media: "all"
+    
+  %body
+    .container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          %li
+            - if admin_signed_in?
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+            - else
+              = link_to 'Sign In', new_user_session_path
+          %li
+            = link_to 'Contacts', admin_contacts_path
+        %h2.muted 
+          = link_to 'FarmlyWed Admin', admin_root_path, class: 'brand'
+      %hr/
+      = yield
+      %hr/
+      .footer
+        %p © FarmlyWed 2013
+  = javascript_include_tag "application"

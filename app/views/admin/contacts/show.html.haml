@@ -1,0 +1,6 @@
+%h1 #{@contact.name} (#{@contact.email}) 
+
+%h3 #{@contact.created_at.to_s(:long)}
+
+%p
+  = simple_format @contact.message
