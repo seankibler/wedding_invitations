@@ -32,6 +32,16 @@
       = f.number_field :kids, :class => 'number_field span1'
   .control-group
     .control-label
+      = f.label :sent_at_true, 'Sent'
+    .controls
+      = f.label :sent_at_true, class: 'checkbox' do
+        = f.radio_button :sent_at, true
+        Yes
+      = f.label :sent_at_false, class: 'checkbox' do
+        = f.radio_button :sent_at, false
+        No
+  .control-group
+    .control-label
       = link_to 'Notes', '#', :id => 'invitation_notes_toggle'
   #invitation_notes_container.control-group.hide
     = f.label :notes, :class => 'control-label'

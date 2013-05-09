@@ -6,7 +6,9 @@ class Filter
     { id: 3, name: 'Brides Family', method: :brides_family},
     { id: 4, name: 'Grooms Family', method: :grooms_family},
     { id: 5, name: 'Friends', method: :friends},
-    { id: 6, name: 'No Label', method: :no_label }
+    { id: 6, name: 'No Label', method: :no_label },
+    { id: 7, name: 'Not Sent', method: :not_sent },
+    { id: 8, name: 'Sent', method: :sent }
   ]
 
   attr_accessor :id, :name, :method
