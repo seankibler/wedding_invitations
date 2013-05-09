@@ -19,6 +19,10 @@ namespace :deploy do
     run "rm -f #{release_path}/config/database.yml && ln -s #{shared_path}/config/database.yml #{release_path}/config/"
   end
 
+  task :link_free_accounts do
+    run "rm -f #{release_path}/config/free_account_emails.yml && ln -s #{shared_path}/config/free_account_emails.yml #{release_path}/config/"
+  end
+
   task :fix_upload_permissions do
     run "chown -R #{runner}:#{group} #{release_path}"
   end
