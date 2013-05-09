@@ -20,6 +20,6 @@ class Wedding < ActiveRecord::Base
   end
 
   def paid?
-    false
+    FreeAccountLookup.new(bride.try(:email)).pass? 
   end
 end
