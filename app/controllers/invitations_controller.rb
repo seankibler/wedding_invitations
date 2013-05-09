@@ -107,7 +107,7 @@ class InvitationsController < ApplicationController
       @at_max_trial_invitations = true
       flash.now[:warning] = 'You have reached the maximum invitations for a trial account. Please add a payment method to continue.'
       if params[:action] == :create
-        redirect_to :back
+        redirect_to invitations_path
       end
     end
   end
