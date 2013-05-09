@@ -24,4 +24,5 @@ end
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'
+  gem 'thin'
 end
