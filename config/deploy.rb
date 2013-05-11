@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'whenever/capistrano'
 load 'deploy/assets'
 
 set :application, "farmlywed"
@@ -8,6 +9,7 @@ set :group, "farmlywed"
 set :deploy_to, "/var/www/vhosts/#{application}.com"
 set :scm, :git
 set :deploy_via, :remote_cache
+set :whenever_command, 'bundle exec whenever'
 
 role :web, "libertas"
 role :app, "libertas"
