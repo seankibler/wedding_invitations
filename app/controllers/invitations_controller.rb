@@ -84,22 +84,20 @@ class InvitationsController < ApplicationController
 
   # GET /invitations/stats
   def stats
-    guest_count = current_wedding.invitations.sum(:size)
-    kid_guest_count = current_wedding.invitations.sum(:kids)
-    invitations_count = current_wedding.invitations.count
     missing_address_count = current_wedding.invitations.missing_address.count
-    grooms_family_count = current_wedding.invitations.grooms_family.count
-    brides_family_count = current_wedding.invitations.brides_family.count
-    friends_count = current_wedding.invitations.friends.count
+    invitations_rsvp_yes_count = current_wedding.invitations.rsvp_yes.count
+    invitations_rsvp_no_count = current_wedding.invitations.rsvp_no.count
+    invitations_rsvp_none_count = current_wedding.invitations.rsvp_none.count
+    invitations_count = current_wedding.invitations.count
+    guest_count = current_wedding.invitations.sum(:size)
 
     render json: {
-      grooms_family: grooms_family_count,
-      brides_family: brides_family_count,
-      friends: friends_count,
       missing_address: missing_address_count,
-      invitations: invitations_count, 
-      guests: guest_count, 
-      kids: kid_guest_count, 
+      invitations_rsvp_yes: invitations_rsvp_yes_count, 
+      invitations_rsvp_no: invitations_rsvp_no_count, 
+      invitations_rsvp_none: invitations_rsvp_none_count, 
+      invitations: invitations_count,
+      guests: guest_count
     }
   end
 

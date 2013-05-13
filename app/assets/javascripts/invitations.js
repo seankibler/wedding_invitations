@@ -4,13 +4,12 @@
 // Stats Dashboard //
 function loadGuestStats() {
   $.get('/invitations/stats', function(data) {
-    $('#stats-kids').html(data.kids);
-    $('#stats-total').html(data.guests);
-    $('#stats-invitations').html(data.invitations);
     $('#stats-missing-address').html(data.missing_address);
-    $('#stats-grooms-family').html(data.grooms_family);
-    $('#stats-brides-family').html(data.brides_family);
-    $('#stats-friends').html(data.friends);
+    $('#stats-rsvp-coming').html(data.invitations_rsvp_yes);
+    $('#stats-rsvp-not-coming').html(data.invitations_rsvp_no);
+    $('#stats-rsvp-none').html(data.invitations_rsvp_none);
+    $('#stats-invitations').html(data.invitations);
+    $('#stats-total').html(data.guests);
   });
 }
 
