@@ -25,9 +25,9 @@ class Invitation < ActiveRecord::Base
 
   def rsvp_response= value
     case value
-    when '1'
+    when 'true'
       response = true
-    when '0'
+    when 'false'
       response = false
     when ''
       response = nil
