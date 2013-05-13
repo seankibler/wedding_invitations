@@ -1,7 +1,7 @@
 class Invitation < ActiveRecord::Base
   attr_accessible :outer_label, :city, :kids, :size, 
     :notes, :state, :street, :wedding_id, :group_id, 
-    :zip_code, :guests_attributes, :sent_at
+    :zip_code, :guests_attributes, :sent_at, :rsvp_response
 
   belongs_to :wedding
   has_many :guests
@@ -17,8 +17,23 @@ class Invitation < ActiveRecord::Base
   scope :no_label, where(outer_label: nil)
   scope :not_sent, where(sent_at: nil)
   scope :sent, where(['sent_at IS NOT NULL OR sent_at != ?', ""])
+  scope :rsvp_yes, where(['rsvp_response = ?', true])
+  scope :rsvp_no, where(['rsvp_response = ?', false])
+  scope :rsvp_none, where('rsvp_response IS NULL') 
 
   accepts_nested_attributes_for :guests, allow_destroy: true, reject_if: proc {|attributes| attributes[:name].blank?}
+
+  def rsvp_response= value
+    case value
+    when '1'
+      response = true
+    when '0'
+      response = false
+    when ''
+      response = nil
+    end
+    write_attribute(:rsvp_response, response)
+  end
 
   def address
     "#{self.street} #{self.city}, #{self.state} #{self.zip_code}"

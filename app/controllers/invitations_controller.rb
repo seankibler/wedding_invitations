@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!
+  prepend_before_filter :reset_filter, only: [:index]
   append_before_filter :limit_trial_invitations, only: [:new, :create]
   layout 'members'
   respond_to :html, :js
@@ -40,7 +41,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to invitations_path, notice: "#{@invitation.outer_label} was added to the invitation list!" }
+        format.html { redirect_to invitations_path(filter: session[:filter]), notice: "#{@invitation.outer_label} was added to the invitation list!" }
         format.json { render json: @invitation, status: :created, location: @invitation }
         format.js
       else
@@ -58,7 +59,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.update_attributes(params[:invitation])
-        format.html { redirect_to invitations_path, notice: 'Invitation was successfully updated.' }
+        format.html { redirect_to invitations_path(filter: session[:filter]), notice: 'Invitation was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,7 +73,7 @@ class InvitationsController < ApplicationController
   def destroy
     @invitation = current_wedding.invitations.find(params[:id])
     @invitation.destroy
-    respond_with @invitation, location: invitations_path
+    respond_with @invitation, location: invitations_path(filter: @filter.id)
   end
 
   # GET /invitations/cities/:city
@@ -110,4 +111,11 @@ class InvitationsController < ApplicationController
     end
   end
   private :limit_trial_invitations
+
+  def reset_filter
+    if params[:filter].blank? || params[:filter] != session[:filter]
+      session.delete(:filter) 
+    end
+  end
+  hide_action :reset_filter
 end

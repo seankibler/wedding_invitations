@@ -42,6 +42,19 @@
         No
   .control-group
     .control-label
+      = f.label :rsvp_response_true, 'RSVP'
+    .controls
+      = f.label :rsvp_response_true, class: 'checkbox' do
+        = f.radio_button :rsvp_response, true
+        Coming
+      = f.label :rsvp_response_false, class: 'checkbox' do
+        = f.radio_button :rsvp_response, false
+        Not Coming
+      = f.label :rsvp_response, class: 'checkbox' do
+        = f.radio_button :rsvp_response, ''
+        No Response
+  .control-group
+    .control-label
       = link_to 'Notes', '#', :id => 'invitation_notes_toggle'
   #invitation_notes_container.control-group.hide
     = f.label :notes, :class => 'control-label'

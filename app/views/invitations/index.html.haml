@@ -2,6 +2,8 @@
 = content_for :heading do
   .page-header
     %h1=t '.title', :default => model_class.model_name.human.pluralize
+= content_for :filters do
+  = render partial: 'filters'
 %table#invitation-list.table.table-striped.table-condensed
   %thead
     %tr

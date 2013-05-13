@@ -1,10 +1,13 @@
 class Filter
   FILTERS = [
-    { id: 1, name: 'Missing Address', method: :missing_address},
-    { id: 2, name: 'More than 3 kids', method: :three_or_more_kids},
-    { id: 3, name: 'Brides Family', method: :brides_family},
-    { id: 4, name: 'Grooms Family', method: :grooms_family},
-    { id: 5, name: 'Friends', method: :friends},
+    { id: 9, name: 'RSVP Coming', method: :rsvp_yes},
+    { id: 10, name: 'RSVP Not Coming', method: :rsvp_no},
+    { id: 11, name: 'RSVP No Response', method: :rsvp_none},
+    { id: 1, name: 'No Address', method: :missing_address},
+    { id: 2, name: '3+ Kids', method: :three_or_more_kids},
+    { id: 3, name: 'Brides Party', method: :brides_family},
+    { id: 4, name: 'Grooms Party', method: :grooms_family},
+    { id: 5, name: 'Mutual Friends', method: :friends},
     { id: 6, name: 'No Label', method: :no_label },
     { id: 7, name: 'Not Sent', method: :not_sent },
     { id: 8, name: 'Sent', method: :sent }
