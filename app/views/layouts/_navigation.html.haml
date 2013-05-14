@@ -1,0 +1,26 @@
+.navbar.navbar-fluid-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "#"} FarmlyWed
+      .container-fluid.nav-collapse
+        %ul.nav.pull-right
+          %li
+            = form_tag search_path, remote: true do
+              = text_field_tag :query, nil, placeholder: 'Search', data: {provide: 'typeahead'}, autocomplete: 'off'
+          %li
+            = link_to invitations_path do
+              %span.icon.icon-list
+              Invitations
+          %li
+            = link_to new_invitation_path do
+              %span.icon.icon-plus-sign
+              New Invitation
+          %li
+            = link_to destroy_user_session_path, :method => :delete do
+              %span.icon.icon-off
+              Sign Out
+      / /.nav-collapse

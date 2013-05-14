@@ -1,0 +1,11 @@
+%ul.inline
+  - Filter.all.each do |filter|
+    - if @filter.id == filter.id
+      = link_to invitations_path, class: 'remove-filter btn btn-primary' do
+        \&times;
+        \#{filter.name}
+    - else
+      %li
+        = link_to invitations_path(filter: filter.id), class: 'filter btn' do
+          %span.icon.icon-filter
+          = filter.name
