@@ -10,6 +10,22 @@ class Wedding < ActiveRecord::Base
   accepts_nested_attributes_for :bride
   accepts_nested_attributes_for :groom
 
+  def return_address_from
+    'Sean Kibler and Ronna Mauter'
+  end
+
+  def return_address_street
+    '641 Guy St. NW'
+  end
+
+  def return_address_city
+    'Massillon'
+  end
+
+  def return_address_zip_code
+    '44647'
+  end
+
   def name
     "Joining of #{groom.try(:name)} and #{bride.try(:name)} on #{wedding_date.to_s(:long)}"
   end

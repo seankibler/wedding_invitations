@@ -1,10 +1,28 @@
-%tr{:id => "invitation_#{invitation.id}"}
-  %td
-    - if invitation.notes.present?
-      %i.icon-question-sign.need-info{:title => 'Notes/Questions', 'data-content' => simple_format(invitation.notes)}
-    = link_to invitation.outer_label, edit_invitation_path(invitation), :title => 'Edit'
-  %td= truncate(invitation.address)
-  %td #{invitation.size} / #{invitation.kids}
-  %td= invitation.group.name if invitation.group.present?
-  %td= link_to t('.destroy', :default => t("helpers.links.destroy")), invitation_path(invitation), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger', :remote => true
+%li.well.row.invitation{id: "invitation_#{invitation.id}"}
+  .span8
+    .sender-address.span4
+      %div= current_wedding.return_address_from
+      %div= current_wedding.return_address_street
+      %div 
+        = current_wedding.return_address_city
+        = current_wedding.return_address_zip_code
+    .row
+    .recipient-address.span4.offset7
+      %div= invitation.outer_label
+      %div= invitation.street
+      %div
+        = invitation.city
+        = invitation.zip_code
+    .row
+    .toolbar
+      = link_to t('.edit', default: t('helpers.links.edit')), edit_invitation_path(invitation), class: 'btn btn-mini'
+      = link_to t('.destroy', :default => t("helpers.links.destroy")), invitation_path(invitation), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger', :remote => true
 
+  /%td
+  /  - if invitation.notes.present?
+  /    %i.icon-question-sign.need-info{:title => 'Notes/Questions', 'data-content' => simple_format(invitation.notes)}
+  /  = link_to invitation.outer_label, edit_invitation_path(invitation), :title => 'Edit'
+  /%td= truncate(invitation.address)
+  /%td #{invitation.size} / #{invitation.kids}
+  /%td= invitation.group.name if invitation.group.present?
+  /%td
