@@ -16,40 +16,7 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
   </head>
   <body>
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">FarmlyWed</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav pull-right">
-              <li>
-              <%= link_to invitations_path do %>
-                <span class="icon icon-list"></span>
-                Invitations
-              <% end %>
-              </li>
-              <li>
-              <%= link_to new_invitation_path do %>
-                <span class="icon icon-plus-sign"></span>
-                New Invitation
-              <% end %>
-              </li>
-              <li>
-              <%= link_to destroy_user_session_path, :method => :delete do %>
-                <span class="icon icon-off"></span>
-                Sign Out
-              <% end %>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'layouts/navigation' %>
     <div class="container-fluid">
       <div class="row-fluid">
         <%- if user_signed_in? %>

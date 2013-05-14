@@ -14,6 +14,7 @@ FarmlyWed::Application.routes.draw do
   get 'invitations/stats' => 'invitations#stats', as: :invitations_stats
   post 'invitations/cities' => 'invitations#cities'
   post 'addresses/lookup' => 'addresses#lookup'
+  post 'invitations/search' => 'searches#create', as: :search
 
   resources :invitations do
     member do

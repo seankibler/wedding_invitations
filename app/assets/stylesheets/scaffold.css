@@ -124,3 +124,8 @@ a.filter {
   padding:5px;
   font-size: 80%;
 }
+
+/* Search */
+ul.typeahead li a:hover, ul.typeahead li:hover  {
+  color:white;
+}

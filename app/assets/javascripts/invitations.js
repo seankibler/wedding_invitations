@@ -63,5 +63,15 @@ $(document).ready(function() {
     event.preventDefault();
     $('#invitation_notes_container').fadeToggle();
   });
+
+  // Search
+  $('input#query').typeahead({
+    source: function (query, process) {
+      return $.post('/invitations/search', { query: query }, function (data) {
+        return process(data);
+      });
+    },
+    minLength: 3
+  });
 });
 

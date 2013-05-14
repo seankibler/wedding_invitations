@@ -20,6 +20,9 @@ class Invitation < ActiveRecord::Base
   scope :rsvp_yes, where(['rsvp_response = ?', true])
   scope :rsvp_no, where(['rsvp_response = ?', false])
   scope :rsvp_none, where('rsvp_response IS NULL') 
+  scope :search, lambda {|query| 
+    joins(:guests).where('guests.name LIKE :query OR invitations.outer_label LIKE :query', query: "%#{query}%") 
+  }
 
   accepts_nested_attributes_for :guests, allow_destroy: true, reject_if: proc {|attributes| attributes[:name].blank?}
 
