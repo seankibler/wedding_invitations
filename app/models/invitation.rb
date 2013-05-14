@@ -51,8 +51,8 @@ class Invitation < ActiveRecord::Base
     read_attribute(:sent_at).present?
   end
 
-  def sent_at= boolean
-    if boolean == true
+  def sent_at= value
+    if value == 'true'
       write_attribute(:sent_at, Time.now)
     else
       write_attribute(:sent_at, nil)
