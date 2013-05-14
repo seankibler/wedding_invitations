@@ -71,6 +71,21 @@ $(document).ready(function() {
         return process(data);
       });
     },
+    updater: function (item) {
+      return item;
+    },
+    highlighter: function(item) {
+      var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+      return item.label.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+        return '<strong>' + match + '</strong>'
+      })
+    },
+    matcher: function(item) {
+      return ~item.label.toLowerCase().indexOf(this.query.toLowerCase())
+    },
+    sorter: function(items) {
+      return items;
+    },
     minLength: 3
   });
 });
