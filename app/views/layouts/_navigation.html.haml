@@ -9,7 +9,7 @@
       .container-fluid.nav-collapse
         %ul.nav.pull-right
           %li
-            = form_tag search_path, remote: true do
+            = form_tag search_path, remote: true, class: 'navbar-form' do
               = text_field_tag :query, nil, placeholder: 'Search', data: {provide: 'typeahead'}, autocomplete: 'off'
           %li
             = link_to invitations_path do
