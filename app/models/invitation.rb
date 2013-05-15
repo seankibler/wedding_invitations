@@ -26,6 +26,21 @@ class Invitation < ActiveRecord::Base
 
   accepts_nested_attributes_for :guests, allow_destroy: true, reject_if: proc {|attributes| attributes[:name].blank?}
 
+  def sent?
+    sent_at.present?
+  end
+
+  def rsvp_status_bootstrap_icon_name
+    case rsvp_response
+    when true
+      'icon-thumbs-up'
+    when false
+      'icon-thumbs-down'
+    when nil
+      'icon-question-sign'
+    end
+  end
+
   def rsvp_response= value
     case value
     when 'true'

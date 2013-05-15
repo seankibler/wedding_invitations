@@ -5,6 +5,8 @@
     %h1=t '.title', :default => model_class.model_name.human.pluralize
 = content_for :filters do
   = render partial: 'filters'
+#invitations-legend
+  = render :partial => 'legend'
 %ol#invitations.unstyled
   = render @invitations
 = link_to new_invitation_path, :class => 'btn btn-primary' do
