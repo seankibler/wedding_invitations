@@ -17,9 +17,6 @@ class Invitation < ActiveRecord::Base
   scope :no_label, where(outer_label: nil)
   scope :not_sent, where(sent_at: nil)
   scope :sent, where(['sent_at IS NOT NULL OR sent_at != ?', ""])
-  scope :rsvp_yes, where(['rsvp_response = ?', true])
-  scope :rsvp_no, where(['rsvp_response = ?', false])
-  scope :rsvp_none, where('rsvp_response IS NULL') 
   scope :search, lambda {|query| 
     joins(:guests).where('guests.name LIKE :query OR invitations.outer_label LIKE :query', query: "%#{query}%") 
   }
