@@ -10,6 +10,7 @@ function loadGuestStats() {
     $('#stats-rsvp-none').html(data.invitations_rsvp_none);
     $('#stats-invitations').html(data.invitations);
     $('#stats-total').html(data.guests);
+    $('#stats-kids').html(data.kids);
   });
 }
 

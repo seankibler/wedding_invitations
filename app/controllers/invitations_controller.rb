@@ -90,6 +90,7 @@ class InvitationsController < ApplicationController
     guests_rsvp_none_count = current_wedding.guests.rsvp_none.count
     invitations_count = current_wedding.invitations.count
     guest_count = current_wedding.invitations.sum(:size)
+    kids_count = current_wedding.invitations.sum(:kids)
 
     render json: {
       missing_address: missing_address_count,
@@ -97,7 +98,8 @@ class InvitationsController < ApplicationController
       invitations_rsvp_no: guests_rsvp_no_count, 
       invitations_rsvp_none: guests_rsvp_none_count, 
       invitations: invitations_count,
-      guests: guest_count
+      guests: guest_count,
+      kids: kids_count
     }
   end
 
