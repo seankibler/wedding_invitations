@@ -1,6 +1,8 @@
 .jumbotron
   %h2 Set Up Your Wedding
   = form_for @wedding do |f|
+    - if @wedding.errors.any?
+      = render partial: 'shared/errors', locals: {errors: @wedding.errors}
     - if current_user.is_a? Groom
       %h3 Tell us about your Bride
       = label_tag :skip_bride, class: 'checkbox' do

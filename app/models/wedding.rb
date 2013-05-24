@@ -7,6 +7,8 @@ class Wedding < ActiveRecord::Base
   belongs_to :groom
   belongs_to :bride
 
+  validate :wedding_date_in_future
+
   accepts_nested_attributes_for :bride
   accepts_nested_attributes_for :groom
 
@@ -37,5 +39,14 @@ class Wedding < ActiveRecord::Base
 
   def paid?
     FreeAccountLookup.new(bride.try(:email)).pass? 
+  end
+
+  private
+  def wedding_date_in_future
+    return true if self.persisted?
+    if self.wedding_date.nil? || self.wedding_date < Date.today
+      self.errors.add(:wedding_date, 'must be in the future')
+      return false
+    end
   end
 end
