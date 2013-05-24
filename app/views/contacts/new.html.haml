@@ -1,6 +1,9 @@
 %h1 Have a question or comment?
 
 = form_for @contact do |f|
+  - if @contact.errors.any?
+    = render partial: 'shared/errors', locals: {errors: @contact.errors}
+
   .control-group
     .controls
       = f.text_field :name, placeholder: 'name'
