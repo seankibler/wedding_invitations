@@ -11,5 +11,5 @@
       %tr
         %td= wedding.name
         %td= wedding.invitations.count
-        %td= wedding.wedding_date.to_s(:long)
-        %td= wedding.created_at.to_s(:long)
+        %td= wedding.wedding_date.try(:to_s, :long)
+        %td= wedding.created_at.try(:to_s, :long)
