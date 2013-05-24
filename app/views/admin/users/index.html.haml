@@ -1,0 +1,17 @@
+%h1 Users
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %th email
+    %th last sign in
+    %th sign ins
+    %th signed up
+    %th user type
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.last_sign_in_at.try(:to_s, :long)
+        %td= user.sign_in_count
+        %td= user.created_at.to_s(:long)
+        %td= user.type
