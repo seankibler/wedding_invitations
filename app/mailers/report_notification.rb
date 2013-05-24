@@ -6,4 +6,9 @@ class ReportNotification < ActionMailer::Base
     @weddings = weddings
     mail(to: REPORT_RECIPIENTS, subject: 'Weddings Report')
   end
+
+  def new_wedding(wedding)
+    @wedding = wedding
+    mail(to: REPORT_RECIPIENTS, subject: 'New Wedding!')
+  end
 end
