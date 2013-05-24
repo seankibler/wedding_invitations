@@ -1,14 +1,19 @@
 - model_class = Invitation
-
 = content_for :heading do
   .page-header
     %h1=t '.title', :default => model_class.model_name.human.pluralize
 = content_for :filters do
   = render partial: 'filters'
-#invitations-legend
-  = render :partial => 'legend'
-%ol#invitations.unstyled
-  = render @invitations
+%table#invitation-list.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:outer_label)
+      %th= model_class.human_attribute_name(:address)
+      %th Guests / Kids
+      %th= model_class.human_attribute_name(:group)
+      %th
+  %tbody
+    = render @invitations
 = link_to new_invitation_path, :class => 'btn btn-primary' do
   %span.icon.icon-plus-sign
   New Invitation
