@@ -5,7 +5,8 @@ FarmlyWed::Application.routes.draw do
   # Admin
   namespace :admin do
     root to: 'contacts#index'
-    resources 'contacts', only: [:index,:show]
+    resources :contacts, only: [:index,:show]
+    resources :weddings
   end
 
   resources :weddings
