@@ -27,7 +27,7 @@ class Wedding < ActiveRecord::Base
   end
 
   def name
-    "Joining of #{groom.try(:name)} and #{bride.try(:name)} on #{wedding_date.to_s(:long)}"
+    "Joining of #{groom.try(:name)} and #{bride.try(:name)} on #{wedding_date.try(:to_s, :long)}"
   end
 
   def at_max_trial_invitations?
