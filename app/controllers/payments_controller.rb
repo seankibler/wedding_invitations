@@ -2,6 +2,10 @@ class PaymentsController < ApplicationController
   before_filter :authenticate_user!
   layout 'members'
 
+  def show
+    @payment = current_wedding.payment
+  end
+
   def new
     @payment = current_wedding.build_payment
   end
@@ -13,12 +17,5 @@ class PaymentsController < ApplicationController
     else
       render :new
     end 
-  end
-
-  def edit
-    @payment = current_wedding.payment
-  end
-
-  def update
   end
 end

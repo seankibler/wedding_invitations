@@ -1,8 +1,25 @@
 class Payment < ActiveRecord::Base
   attr_accessible :stripe_card_token
-  attr_accessor :stripe_card_token
+  attr_accessor :stripe_card_token, :charge
 
   belongs_to :wedding
+
+  def card
+    charge.card
+  end
+
+  def amount
+    charge.amount / 100
+  end
+
+  def date
+    Time.at(charge.created).to_s(:long)
+  end
+
+  def charge
+    return nil if stripe_charge_id.nil?
+    @charge ||= OpenStruct.new Stripe::Charge.retrieve(stripe_charge_id)
+  end
 
   def save_with_card
     if valid?

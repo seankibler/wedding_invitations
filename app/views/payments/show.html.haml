@@ -1,0 +1,19 @@
+%h1 Your Account Has Already Been Paid
+
+%p Your payment information is displayed below.
+
+%table.table.table-condensed
+  %thead
+    %tr
+      %th Card Info
+      %th Charged Amount 
+      %th Date Charged
+  %tbody
+    %tr
+      %td 
+        = @payment.card.type
+        *#{@payment.card.last4}
+        #{@payment.card.exp_month}/#{@payment.card.exp_year}
+      %td= number_to_currency @payment.amount
+      %td= @payment.date
+
