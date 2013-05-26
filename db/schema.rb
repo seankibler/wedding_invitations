@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513204155) do
+ActiveRecord::Schema.define(:version => 20130525220052) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20130513204155) do
   add_index "invitations", ["sent_at"], :name => "index_invitations_on_sent_at"
   add_index "invitations", ["wedding_id", "rsvp_response"], :name => "index_invitations_on_wedding_id_and_rsvp_response"
   add_index "invitations", ["wedding_id"], :name => "index_invitations_on_wedding_id"
+
+  create_table "payments", :force => true do |t|
+    t.integer "wedding_id"
+    t.string  "stripe_customer_id"
+    t.string  "stripe_charge_id"
+  end
+
+  add_index "payments", ["wedding_id"], :name => "index_payments_on_wedding_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

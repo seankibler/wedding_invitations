@@ -1,0 +1,30 @@
+= content_for :head do
+  = javascript_include_tag "https://js.stripe.com/v1/"
+  = tag :meta, :name => "stripe-key", :content => STRIPE_PUBLISHABLE_KEY
+
+%h1 Payment
+%p We charge a very simple one-time cost of $10.00. After that you can create as many invitations as you want and your account lasts forever.
+= form_for @payment do |f|
+  - if @payment.errors.any?
+    = render partial: 'shared/errors', locals: {errors: @payment.errors}
+  #stripe-error
+    %noscript
+      JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+
+  = f.hidden_field :stripe_card_token
+
+  .control-group
+    .controls
+      = text_field_tag :card_number, nil, name: nil, placeholder: 'card number'
+  .control-group
+    .controls
+      = text_field_tag :card_code, nil, name: nil, placeholder: 'cvv code'
+  .control-group
+    .controls
+      = text_field_tag :card_month, nil, name: nil, placeholder: 'card expiration month (ex: 02)'
+  .control-group
+    .controls
+      = text_field_tag :card_year, nil, name: nil, placeholder: 'card expiration year (ex: 2015)'
+
+  .form-actions
+    = f.submit 'Pay', class: 'btn btn-large'

@@ -11,6 +11,7 @@ FarmlyWed::Application.routes.draw do
   end
 
   resources :weddings
+  resource :payments
 
   # Invitations
   get 'invitations/stats' => 'invitations#stats', as: :invitations_stats

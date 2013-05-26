@@ -7,6 +7,7 @@
     %title= content_for?(:title) ? yield(:title) : "FarmlyWed - Easily Prepare and Manage Your Wedding Guest Invitation List"
     %meta{:content => "With FarmlyWed you build a guest list for your wedding, as a member you can invite family to help you with your wedding guests invitations", :name => "description"}/
     = csrf_meta_tags
+    = yield :head
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>

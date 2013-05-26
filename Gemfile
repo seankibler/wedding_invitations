@@ -14,6 +14,7 @@ gem 'highline'
 gem 'taps'
 gem 'whenever', require: false
 gem 'exception_notification'
+gem 'stripe'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
