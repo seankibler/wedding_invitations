@@ -15,12 +15,10 @@
     .container-narrow
       .masthead
         %ul.nav.nav-pills.pull-right
-          %li
-            = link_to 'About', page_path('about')
-          %li
-            = link_to 'FAQs', page_path('faqs')
-          %li
-            = link_to 'Contact', page_path('contact')
+          %li= link_to 'Pricing', page_path('pricing')
+          %li= link_to 'About', page_path('about')
+          %li= link_to 'FAQs', page_path('faqs')
+          %li= link_to 'Contact', page_path('contact')
           - if user_signed_in?
             %li= link_to 'Invitations', invitations_path
             %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
