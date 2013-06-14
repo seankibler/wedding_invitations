@@ -1,1 +1,1 @@
-rvm use 1.9.3-p194@FarmlyWed
+rvm use 1.9.3-p194@FarmlyWed --create
