@@ -30,15 +30,15 @@ class Wedding < ActiveRecord::Base
   end
 
   def name
-    groom_name = groom.present? ? groom.name : 'Handsome Groom'
-    bride_name = bride.present? ? bride.name : 'Beatiful Bride'
-    components << ['Joining of']
-    [groom_name, bride_name].each do |participant_name|
-      components << participant_name if participant_name.present?
-      components << 'and'
-    end
-    components << "on #{wedding_date.try(:to_s, :long)}"
-    return components.join(' ')
+    sprintf "Joining of %s and %s on %s", groom_name, bride_name, wedding_date.try(:to_s, :long)
+  end
+
+  def groom_name
+    groom.present? ? groom.name : 'her handsome groom'
+  end
+
+  def bride_name
+    bride.present? ? bride.name : 'his beatiful bride'
   end
 
   def at_max_trial_invitations?
