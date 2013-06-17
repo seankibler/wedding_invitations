@@ -5,3 +5,6 @@ jQuery ->
       $(hideContent).fadeOut()
     else
       $(hideContent).fadeIn()
+  $('#wedding_wedding_date').datepicker({
+    dateFormat: 'MM d, yy'
+  })
