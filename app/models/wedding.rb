@@ -30,7 +30,11 @@ class Wedding < ActiveRecord::Base
   end
 
   def name
-    sprintf "Joining of %s and %s on %s", groom_name, bride_name, wedding_date.try(:to_s, :long)
+    if groom.present?
+      sprintf "Joining of %s and %s on %s", groom_name, bride_name, wedding_date.try(:to_s, :long)
+    else
+      sprintf "Joining of %s and %s on %s", bride_name, groom_name, wedding_date.try(:to_s, :long)
+    end
   end
 
   def groom_name
