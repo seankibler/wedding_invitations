@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '~> 3.2.12'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -10,7 +10,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'httparty'
 gem 'hashie'
-gem 'white_pages', :git => 'git://github.com/seankibler/white_pages.git'
+gem 'white_pages'
 gem 'highline'
 gem 'taps'
 gem 'whenever', require: false
