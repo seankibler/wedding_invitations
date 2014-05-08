@@ -68,7 +68,7 @@ FarmlyWed::Application.configure do
   config.action_mailer.default_url_options = { :host => 'farmlywed.com' }
   config.action_mailer.delivery_method = :sendmail
 
-  config.middleware.use ExceptionNotifier,
+  config.middleware.use ExceptionNotification::Rack,
     :email => {
     :email_prefix => "[Wedding Crash] ",
     :sender_address => %{"crash notification" <admin@farmlywed.com>},
