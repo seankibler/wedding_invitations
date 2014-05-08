@@ -11,9 +11,9 @@ set :scm, :git
 set :deploy_via, :remote_cache
 set :whenever_command, 'bundle exec whenever'
 
-role :web, "libertas"
-role :app, "libertas"
-role :db,  "libertas", :primary => true
+role :web, "do.seankibler.com"
+role :app, "do.seankibler.com"
+role :db,  "do.seankibler.com", :primary => true
 
 
 namespace :deploy do
