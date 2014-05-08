@@ -27,6 +27,6 @@ end
 
 # Deploy with Capistrano
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.14.2'
   gem 'thin'
 end
