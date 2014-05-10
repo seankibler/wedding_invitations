@@ -29,4 +29,5 @@ end
 group :development do
   gem 'capistrano', '~> 2.14.2'
   gem 'thin'
+  gem 'rails-erd', git: 'https://github.com/paulwittmann/rails-erd', branch: 'mavericks'
 end
