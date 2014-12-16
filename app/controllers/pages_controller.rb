@@ -1,18 +1,18 @@
 class PagesController < ApplicationController
   def show
     if requested_page_exists?
-      render :action => path_to_template(request.path_info)
+      render :action => template_from_path
     else
-      raise ActionController::RoutingError.new "The template #{path_to_template(request.path_info)} does not exist."
+      raise ActionController::RoutingError.new "The template #{template_from_path} does not exist."
     end
   end
 
   private
   def requested_page_exists?
-    File.exist?  "#{Rails.root}/app/views/pages/#{path_to_template(request.path_info)}"
+    template_exists? template_from_path, 'pages'
   end
 
-  def path_to_template(path)
-    path.gsub('-','_').gsub('/','')
+  def template_from_path
+    @template_from_path ||= request.path_info.gsub('-','_').gsub('/','')
   end
 end
