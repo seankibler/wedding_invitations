@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   private
   def requested_page_exists?
-    File.exist? "app/views/pages/#{path_to_template(request.path_info)}"
+    File.exist?  "#{Rails.root}/app/views/pages/#{path_to_template(request.path_info)}"
   end
 
   def path_to_template(path)
