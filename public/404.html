@@ -2,25 +2,27 @@
 <html>
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
+  <link href="/assets/bootstrap_and_overrides.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/assets/scaffold.css" media="all" rel="stylesheet" type="text/css">
   <style type="text/css">
     body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
     div.dialog {
       width: 25em;
-      padding: 0 4em;
+      padding: 1em 4em;
       margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
+      border: 1px solid #ddd;
+      border-right-color: #aaa;
+      border-bottom-color: #aaa;
+      box-shadow: 8px 8px 3px #888;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+    <h1>The page you requested appears to not exist.</h1>
+    <p class="lead">Perhaps you've mistyped the address, the page has been moved elsewhere, or has vanished forever.</p>
   </div>
 </body>
 </html>
