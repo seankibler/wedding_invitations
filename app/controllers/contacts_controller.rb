@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.new(params[:contact])
+    @contact = Contact.new(contact_params)
     @contact.referrer = session[:redirect_to]
     @contact.user_agent = request.user_agent
 
@@ -17,5 +17,11 @@ class ContactsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  private
+
+  def contact_params
+    params[:contact].permit(:name, :email, :message)
   end
 end

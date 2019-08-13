@@ -1,8 +1,4 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :outer_label, :city, :kids, :size,
-    :notes, :state, :street, :wedding_id, :group_id,
-    :zip_code, :guests_attributes, :sent_at, :rsvp_response
-
   belongs_to :wedding
   has_many :guests
   belongs_to :group

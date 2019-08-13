@@ -37,7 +37,7 @@ class InvitationsController < ApplicationController
   # POST /invitations
   # POST /invitations.json
   def create
-    @invitation = current_wedding.invitations.new(params[:invitation])
+    @invitation = current_wedding.invitations.new(invitation_params)
 
     respond_to do |format|
       if @invitation.save
@@ -58,7 +58,7 @@ class InvitationsController < ApplicationController
     @invitation = current_wedding.invitations.find(params[:id])
 
     respond_to do |format|
-      if @invitation.update_attributes(params[:invitation])
+      if @invitation.update_attributes(invitation_params)
         format.html { redirect_to invitations_path(filter: session[:filter]), notice: 'Invitation was successfully updated.' }
         format.json { head :no_content }
       else
@@ -94,13 +94,29 @@ class InvitationsController < ApplicationController
 
     render json: {
       missing_address: missing_address_count,
-      invitations_rsvp_yes: guests_rsvp_yes_count, 
-      invitations_rsvp_no: guests_rsvp_no_count, 
-      invitations_rsvp_none: guests_rsvp_none_count, 
+      invitations_rsvp_yes: guests_rsvp_yes_count,
+      invitations_rsvp_no: guests_rsvp_no_count,
+      invitations_rsvp_none: guests_rsvp_none_count,
       invitations: invitations_count,
       guests: guest_count,
       kids: kids_count
     }
+  end
+
+  def reset_filter
+    if params[:filter].blank? || params[:filter] != session[:filter]
+      session.delete(:filter)
+    end
+  end
+  hide_action :reset_filter
+
+  private
+
+  def invitation_params
+    params[:invitation].permit(:outer_label, :city, :kids, :size, :notes,
+                               :state, :street, :wedding_id, :group_id,
+                               :zip_code, :sent_at, :rsvp_response,
+                               :guests_attributes => [:name, :invitation_id])
   end
 
   def limit_trial_invitations
@@ -110,12 +126,4 @@ class InvitationsController < ApplicationController
       redirect_to invitations_path
     end
   end
-  private :limit_trial_invitations
-
-  def reset_filter
-    if params[:filter].blank? || params[:filter] != session[:filter]
-      session.delete(:filter) 
-    end
-  end
-  hide_action :reset_filter
 end

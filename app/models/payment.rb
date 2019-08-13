@@ -1,5 +1,4 @@
 class Payment < ActiveRecord::Base
-  attr_accessible :stripe_card_token
   attr_accessor :stripe_card_token, :charge
 
   belongs_to :wedding

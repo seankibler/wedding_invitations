@@ -1,5 +1,4 @@
 class Wedding < ActiveRecord::Base
-  attr_accessible :bride_attributes, :groom_attributes, :wedding_date, :groom_id, :bride_id
   has_one :payment
   has_many :guests, through: :invitations
   has_many :invitations
