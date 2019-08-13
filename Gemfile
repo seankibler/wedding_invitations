@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.13'
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.13'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
@@ -19,8 +19,9 @@ gem 'stripe'
 gem 'sass-rails',   '~> 4.0.5'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '>= 4.1.20'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'therubyracer'
+gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'rails-observers'
 
 # Deploy with Capistrano
 group :development do
