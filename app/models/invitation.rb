@@ -1,6 +1,6 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :outer_label, :city, :kids, :size, 
-    :notes, :state, :street, :wedding_id, :group_id, 
+  attr_accessible :outer_label, :city, :kids, :size,
+    :notes, :state, :street, :wedding_id, :group_id,
     :zip_code, :guests_attributes, :sent_at, :rsvp_response
 
   belongs_to :wedding
@@ -9,20 +9,20 @@ class Invitation < ActiveRecord::Base
 
   validates :zip_code, format: {with: /\d{5}(-\d{4})?/, allow_blank: true, message: I18n.translate('validations.invitations.zip_code')}
 
-  scope :missing_address, where("street = '' OR city = ''")
-  scope :three_or_more_kids, where("kids >= 3")
-  scope :brides_family, joins(:group).where(['groups.name = ?', 'Bride'])
-  scope :grooms_family, joins(:group).where(['groups.name = ?', 'Groom'])
-  scope :friends, joins(:group).where(['groups.name = ?', 'Friends'])
-  scope :no_label, where(outer_label: nil)
-  scope :not_sent, where(sent_at: nil)
-  scope :sent, where(['sent_at IS NOT NULL OR sent_at != ?', ""])
-  scope :search, lambda {|query| 
-    joins(:guests).where('guests.name LIKE :query OR invitations.outer_label LIKE :query', query: "%#{query}%") 
+  scope :missing_address, -> { where "street = '' OR city = ''" }
+  scope :three_or_more_kids, -> { where "kids >= 3" }
+  scope :brides_family, -> { joins(:group).where(['groups.name = ?', 'Bride']) }
+  scope :grooms_family, -> { joins(:group).where(['groups.name = ?', 'Groom']) }
+  scope :friends, -> { joins(:group).where(['groups.name = ?', 'Friends']) }
+  scope :no_label, -> { where outer_label: nil }
+  scope :not_sent, -> { where sent_at: nil }
+  scope :sent, -> { where ['sent_at IS NOT NULL OR sent_at != ?', ""] }
+  scope :search, lambda {|query|
+    joins(:guests).where('guests.name LIKE :query OR invitations.outer_label LIKE :query', query: "%#{query}%")
   }
-  scope :rsvp_yes, where(['rsvp_response = ?', true])
-  scope :rsvp_no, where(['rsvp_response = ?', false])
-  scope :rsvp_none, where('rsvp_response IS NULL') 
+  scope :rsvp_yes, -> { where ['rsvp_response = ?', true] }
+  scope :rsvp_no, -> { where ['rsvp_response = ?', false] }
+  scope :rsvp_none, -> { where 'rsvp_response IS NULL' }
 
   accepts_nested_attributes_for :guests, allow_destroy: true, reject_if: proc {|attributes| attributes[:name].blank?}
 
