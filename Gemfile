@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.12'
+gem 'rails', '~> 4.0.13'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -16,14 +16,11 @@ gem 'taps'
 gem 'whenever', require: false
 gem 'exception_notification'
 gem 'stripe'
-
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem "therubyracer"
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-end
+gem 'sass-rails',   '~> 4.0.5'
+gem 'coffee-rails', '~> 4.2.2'
+gem 'uglifier', '>= 4.1.20'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 
 # Deploy with Capistrano
 group :development do
