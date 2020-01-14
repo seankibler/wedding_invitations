@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_filter
   before_filter :set_up_wedding
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def set_up_wedding
     if user_signed_in? && current_wedding.nil? && params[:controller] != 'weddings'
@@ -36,4 +37,10 @@ class ApplicationController < ActionController::Base
   end
   hide_action :get_filter
 
+  protected
+  def permit_user_params
+    devise_parameter_sanitizer.for(:sign_up) << :first_name
+    devise_parameter_sanitizer.for(:sign_up) << :last_name
+    devise_parameter_sanitizer.for(:sign_up) << :type
+  end
 end
