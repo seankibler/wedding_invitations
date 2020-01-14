@@ -13,19 +13,19 @@ class Wedding < ActiveRecord::Base
   accepts_nested_attributes_for :groom
 
   def return_address_from
-    'Sean Kibler and Ronna Mauter'
+    'First Last and First Last'
   end
 
   def return_address_street
-    '641 Guy St. NW'
+    '123 Street Address'
   end
 
   def return_address_city
-    'Massillon'
+    'City'
   end
 
   def return_address_zip_code
-    '44647'
+    'Zip'
   end
 
   def name
