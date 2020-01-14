@@ -25,6 +25,7 @@ class WeddingsController < ApplicationController
   private
 
   def wedding_params
+    user_attrs = [:first_name, :last_name, :email, :password, :password_confirmation]
     params[:wedding].permit(:wedding_date, :groom_id, :bride_id,
                             :bride_attributes => user_attributes,
                             :groom_attributes => user_attributes)
