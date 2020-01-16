@@ -1,5 +1,4 @@
 VERSION = $(shell git rev-parse --verify HEAD)
-DIR = $(shell pwd)
 NAME = wedding_invitations
 
 PHONY: build
@@ -11,5 +10,9 @@ run:
 	docker run --network host --name $(NAME) wedding_invitations:$(VERSION)
 
 PHONY: dev
-run:
-	docker run --network host --name $(NAME) -v $(pwd):/app wedding_invitations:$(VERSION)
+dev:
+	docker run --network host --name $(NAME) -v $(shell pwd):/app wedding_invitations:$(VERSION)
+
+PHONY: push
+push:
+	docker push quay.io/seankibler/wedding_invitations:$(VERSION)
