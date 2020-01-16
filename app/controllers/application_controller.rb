@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_filter
   before_filter :set_up_wedding
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :permit_user_params, if: :devise_controller?
 
   def set_up_wedding
     if user_signed_in? && current_wedding.nil? && params[:controller] != 'weddings'
