@@ -1,32 +1,21 @@
-.well
-  %h2 Stats
-  %table.table
-    %tr
-      %td No Address
-      %td
-        %span#stats-missing-address.badge.badge-info
-    %tr
-      %td RSVP Coming
-      %td
-        %span#stats-rsvp-coming.badge.badge-info
-    %tr
-      %td RSVP Not Coming
-      %td
-        %span#stats-rsvp-not-coming.badge.badge-info
-    %tr
-      %td RSVP Not Received
-      %td
-        %span#stats-rsvp-none.badge.badge-info
-    %tr
-      %td Total Invitations
-      %td
-        %span#stats-invitations.badge.badge-info
-    %tr
-      %td Guests
-      %td
-        %span#stats-total.badge.badge-success
-    %tr
-      %td Kids
-      %td
-        %span#stats-kids.badge.badge-success
-/ /.well
+%button.btn.btn-default{type: 'button'}
+  No Address
+  %span#stats-missing-address.badge
+%button.btn.btn-default{type: 'button'}
+  RSVP Coming
+  %span#stats-rsvp-coming.badge
+%button.btn.btn-default{type: 'button'}
+  RSVP Not Coming
+  %span#stats-rsvp-not-coming.badge
+%button.btn.btn-default{type: 'button'}
+  RSVP Not Received
+  %span#stats-rsvp-none.badge.badge-info
+%button.btn.btn-default{type: 'button'}
+  Total Invitations
+  %span#stats-invitations.badge.badge-info
+%button.btn.btn-default{type: 'button'}
+  Guests
+  %span#stats-total.badge.badge-success
+%button.btn.btn-default{type: 'button'}
+  Kids
+  %span#stats-kids.badge.badge-success

@@ -23,14 +23,14 @@ $(document).ready(function() {
   });
 
   // City typeahead //
-  $('input#invitation_city').typeahead({
-    source: function(query, process) {
-      return $.post('/invitations/cities', {city: query}, function(data) {
-        return process(data);
-      });
-    },
-    minLength: 2
-  });
+  //  $('input#invitation_city').typeahead({
+  //    source: function(query, process) {
+  //      return $.post('/invitations/cities', {city: query}, function(data) {
+  //        return process(data);
+  //      });
+  //    },
+  //    minLength: 2
+  //  });
 
   // Info Popover //
   $('.need-info, .help-tip').popover({html: true, trigger: 'hover', placement: 'top'});
@@ -66,28 +66,28 @@ $(document).ready(function() {
   });
 
   // Search
-  $('input#query').typeahead({
-    source: function (query, process) {
-      return $.post('/invitations/search', { query: query }, function (data) {
-        return process(data);
-      });
-    },
-    updater: function (item) {
-      return item;
-    },
-    highlighter: function(item) {
-      var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.label.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
-        return '<strong>' + match + '</strong>'
-      })
-    },
-    matcher: function(item) {
-      return ~item.label.toLowerCase().indexOf(this.query.toLowerCase())
-    },
-    sorter: function(items) {
-      return items;
-    },
-    minLength: 3
-  });
+  //$('input#query').typeahead({
+  //  source: function (query, process) {
+  //    return $.post('/invitations/search', { query: query }, function (data) {
+  //      return process(data);
+  //    });
+  //  },
+  //  updater: function (item) {
+  //    return item;
+  //  },
+  //  highlighter: function(item) {
+  //    var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+  //    return item.label.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+  //      return '<strong>' + match + '</strong>'
+  //    })
+  //  },
+  //  matcher: function(item) {
+  //    return ~item.label.toLowerCase().indexOf(this.query.toLowerCase())
+  //  },
+  //  sorter: function(items) {
+  //    return items;
+  //  },
+  //  minLength: 3
+  //});
 });
 
