@@ -1,10 +1,9 @@
 = f.fields_for :guests, guest do |guests_fields|
-  .control-group
-    = guests_fields.label :name, 'Guest Name', class: 'control-label'
-    .controls
-      = guests_fields.text_field :name
-      = link_to 'Lookup Address', '#', class: 'address_lookup'
-      - if guest.persisted?
-        = guests_fields.label :_destroy do
-          = guests_fields.check_box :_destroy
-          Delete
+  .form-group
+    = guests_fields.label :name, 'Guest Name'
+    = guests_fields.text_field :name, class: 'form-control'
+    = link_to 'Lookup Address', '#', class: 'address_lookup'
+    - if guest.persisted?
+      = guests_fields.label :_destroy do
+        = guests_fields.check_box :_destroy
+        Delete
